@@ -1,0 +1,42 @@
+\RequirePackage{fix-cm}
+\documentclass[12pt, table, letterpaper]{report}
+
+\input{Preamble/Preamble.tex}
+
+\begin{document}
+	\pagenumbering{gobble}
+	\input{Preamble/Coverpage.tex}
+	\clearpage
+	\newpage
+	\input{Preamble/Signaturespage.tex}
+	\clearpage
+	\newpage
+	\input{Preamble/Agradecimientos.tex}
+	\clearpage
+	\newpage
+	\tableofcontents
+	\listoffigures
+	\listoftables
+
+	\clearpage
+	\newpage
+	\pagenumbering{Roman}	
+	\glsfindwidesttoplevelname[\acronymtype]
+	\printglossary[style=custommcolalttree, type=\acronymtype, title=Abreviaciones y acrónimos, nonumberlist]
+	\clearpage
+	\newpage
+	\input{Preamble/Resumen.tex}
+	\glsfindwidesttoplevelname[\glsdefaulttype]
+	\printglossary[style=alttree, nonumberlist]
+	
+	\cleardoublepage
+	\pagenumbering{arabic}
+	%%%
+	% Contenido
+	%%%
+	\input{Content/Chapter-1/Introducción.tex}
+	\input{Content/Chapter-2/Objetivos.tex}
+	\input{Content/Chapter-3/Planteamiento-del-problema.tex}
+	\input{Content/Chapter-4/Justificación.tex}
+	\printbibliography[heading=bibintoc]
+\end{document}
