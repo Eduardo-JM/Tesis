@@ -6,25 +6,35 @@
 \begin{document}
 	\pagenumbering{gobble}
 	\input{Preamble/Coverpage.tex}
-	\clearpage
-	\newpage
+	\clearpage\newpage
 	\input{Preamble/Signaturespage.tex}
-	\clearpage
-	\newpage
+	\clearpage\newpage
 	\input{Preamble/Agradecimientos.tex}
-	\clearpage
-	\newpage
+	
+	\clearpage\newpage	
 	\tableofcontents
 	\listoffigures
 	\listoftables
 
-	\clearpage
-	\newpage
+	\clearpage\newpage
 	\pagenumbering{Roman}	
 	\glsfindwidesttoplevelname[\acronymtype]
-	\printglossary[style=custommcolalttree, type=\acronymtype, title=Abreviaciones y acrónimos, nonumberlist]
-	\clearpage
-	\newpage
+	\printglossary[
+		style=custommcolalttree,
+		type=\acronymtype,
+		title=Abreviaciones y acrónimos,
+		nonumberlist
+	]
+	
+	\clearpage\newpage
+	\glsfindwidesttoplevelname[symbols]
+	\printglossary[
+		style=custommcolalttree,
+		type=symbols,
+		title=Simbología,
+		nonumberlist
+	]
+	
 	\input{Preamble/Resumen.tex}
 	\glsfindwidesttoplevelname[\glsdefaulttype]
 	\printglossary[style=alttree, nonumberlist]
@@ -38,5 +48,9 @@
 	\input{Content/Chapter-2/Objetivos.tex}
 	\input{Content/Chapter-3/Planteamiento-del-problema.tex}
 	\input{Content/Chapter-4/Justificación.tex}
+	\input{Content/Chapter-5/Marco-teórico.tex}
 	\printbibliography[heading=bibintoc]
+	
+	\appendix
+	\input{Content/Appendix/Seawater-properties.tex}
 \end{document}

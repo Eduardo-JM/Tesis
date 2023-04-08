@@ -1,0 +1,64 @@
+\begin{forest}
+	for tree={
+		line width=0.5pt,
+		draw=linecol,
+		rect,
+		calign=edge midpoint,
+		minimum size=25pt,
+		text width=50mm,
+		rounded corners=5pt,
+		child anchor=north,
+		parent anchor=south,
+		drop shadow,
+		l sep+=12.5pt,
+		inner color=background,
+		anchor=center,
+		edge path={
+			\noexpand\path[color=linecol, rounded corners=5pt,>={Stealth[length=10pt]}, line width=0.5pt, ->, \forestoption{edge}]
+			(!u.parent anchor) -- +(0,-5pt) -|
+			(.child anchor)\forestoption{edge label};
+		},
+		if = {level == 1}{outer color=lightblue, text width=38mm}{},
+		if = {level == 2}{
+			outer color=lightgreen,
+			for tree = {
+				text width=28mm,
+				child anchor=west
+			}
+		}{},
+		if = {level == 3}{outer color=lightpink, text width=12mm}{}
+	}
+	[Clasificación, outer color=lilac,
+	for tree = {
+		for children = {
+			grow'=0,
+			folder
+		}
+	}
+		[Térmicos
+			[Adición
+				[\acrshort{msf}]
+				[\acrshort{med}]
+				[\acrshort{mvc}]
+				[\acrshort{hdh}]
+				[\acrshort{sd}]
+			]
+			[Extracción
+				[\acrshort{frz}]
+			]
+		]
+		[Membrana
+			[\acrshort{ro}]
+			[\acrshort{fo}]
+			[\acrshort{ed}]
+			[\acrshort{nf}]
+		]
+		[Químicos
+			[\acrshort{iex}]
+			[\acrshort{lle}]
+			[\acrshort{ghyd}]
+			[Otros]
+		]
+		[Adsorción]
+	]
+\end{forest}
