@@ -69,14 +69,14 @@
 }
 
 \usetikzlibrary{external}
-\tikzexternalize[prefix=Pictures/]
-%\tikzset{
-%	external/system call={xelatex --shell-escape --fmt preamble --halt-on-error --output-directory ./build -jobname "\image" "\texsource"}
-%}
+\tikzexternalize
 
-\tikzset{
-	external/system call={
-		xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"
+\tikzset{%
+	external/system call={%
+		xelatex \tikzexternalcheckshellescape --output-directory ./build -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"%
+	},
+	/pgf/images/include external/.code={%
+		\includegraphics{build/#1}%
 	}
 }
 
