@@ -1,0 +1,68 @@
+\begin{forest}
+	for tree={
+		line width=0.5pt,
+		draw=linecol,
+		rect,
+		calign=edge midpoint,
+		minimum size=25pt,
+		text width=75mm,
+		rounded corners=5pt,
+		child anchor=north,
+		parent anchor=south,
+		drop shadow,
+		l sep+=12.5pt,
+		inner color=background,
+		anchor=center,
+		edge path={
+			\noexpand\path[color=linecol, rounded corners=5pt,>={Stealth[length=10pt]}, line width=0.5pt, ->, \forestoption{edge}]
+			(!u.parent anchor) -- +(0,-5pt) -|
+			(.child anchor)\forestoption{edge label};
+		},
+		if = {level == 1}{outer color=lightblue, text width=60mm}{},
+		if = {level == 2}{
+			outer color=lightgreen,
+			for tree = {
+				text width=50mm,
+				child anchor=west
+			}
+		}{},
+		if = {level == 3}{outer color=lightpink, text width=45mm}{}
+	}
+	[Destilador solar, outer color=lilac,
+	for tree = {
+		for children = {
+			grow'=0,
+			folder
+		}
+	}
+		[Activo
+			[Integrado
+				[Colector parabólico]
+				[Colector de placa plana]
+				[Colector tubular]
+				[Colector cilíndrico]
+				[Bomba de calor integrada]
+			]
+			[Híbrido
+				[Integrado a un estanque solar]
+				[Integrado a módulos fotovoltaicos]
+				[Integrado a un extractor]
+				[Potenciado por calor residual]
+			]
+		]
+		[Pasivo
+			[Con forma de V]
+			[De una vertiente o inclinado]
+			[Dos vertientes o de tejado]
+			[Estructura de cascada]
+			[Esférico]
+			[Hemisférico]
+			[Multi-efecto]
+			[Pirámide triangular]
+			[Con condensador]
+			[Destilador tubular]
+			[Con reflector]
+			[Cóncavo]
+		]
+	]
+\end{forest}
