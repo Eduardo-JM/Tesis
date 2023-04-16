@@ -2,11 +2,14 @@
 % Language & localization
 
 \selectlanguage{spanish}
-\crefname{table}{\spanishtablename}{\spanishtablename}
+\crefname{table}{tabla}{tablas}
+\crefname{Table}{Tabla}{Tablas}
 \crefname{reaction}{reacción}{reacciones}
 \Crefname{Reaction}{Reacción}{Reacciones}
 \crefname{section}{sección}{secciones}
 \crefname{Section}{Sección}{Secciones}
+\crefname{equation}{}{}
+\crefname{Equation}{}{}
 \crefname{figure}{fig.}{figs.}
 \Crefname{figure}{Fig.}{Figs.}
 \decimalpoint
@@ -21,7 +24,6 @@
 }
 
 \sisetup{
-	per-mode = symbol,
 	sticky-per
 }
 
@@ -37,12 +39,6 @@
 \DefTblrTemplate{conthead-text}{normal}{(Continuación)}
 \SetTblrTemplate{conthead-text}{normal}
 \SetTblrTemplate{contfoot-text}{normal}
-
-%\newcommand{\xltmulticolumn}[3]{
-%	\multicolumn{#1}
-%	{|>{\hsize=\dimexpr#1\hsize+\tabcolsep * (2 * (#1 - 1) )+\arrayrulewidth* (#1 - 2)\relax}#2|}
-%	{#3}
-%}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -75,7 +71,9 @@
 
 %% Custom section
 
-%\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
 %\titleclass{\subsubsection}{straight}[\subsection]
 %\newcounter{subsubsection}[subsection]
 %\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
@@ -86,8 +84,8 @@
 %
 %\titleformat{\section}{\normalfont\fontsize{16}{15}\bfseries}{\thesection}{1em}{}
 %\titleformat{\subsection}{\normalfont\fontsize{14}{15}\bfseries}{\thesubsection}{1em}{}
-%\titleformat{\subsubsection}{\normalfont\fontsize{14}{15}\bfseries}{\thesubsubsection}{1em}{}
-%\titleformat{\subsubsubsection}{\normalfont\fontsize{14}{15}\bfseries}{\thesubsubsubsection}{1em}{}
+%\titleformat{\subsubsection}{\normalfont\fontsize{14}{14}\bfseries}{\thesubsubsection}{1em}{}
+%\titleformat{\subsubsubsection}{\normalfont\fontsize{12}{12}\bfseries}{\thesubsubsubsection}{1em}{}
 %
 %\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 %\titlespacing\subsection{0pt}{10pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -142,9 +140,36 @@
 	\setglossarystyle{mcolalttree}%
 	\renewcommand{\glossaryheader}{\vspace{\dimexpr -\baselineskip -\parskip}}
 }
+
+\newglossary[slg]{csymbols}{syi}{syg}{\glssymbolsgroupname}
+\glsaddkey{unit}{\glsentrytext{\glslabel}}{\glsentryunit}{\GLsentryunit}{\glsunit}{\Glsunit}{\GLSunit}
+\glssetnoexpandfield{unit}
+
+\newglossarystyle{symbolunittable}{
+    \setglossarystyle{long3colheader}
+    \renewenvironment{theglossary}{
+    		\renewcommand*{\arraystretch}{1.5}
+		\begin{longtable}{
+			p{2cm} p{8cm}>{\centering\arraybackslash}p{4cm}
+		}
+	}
+	{
+		\end{longtable}
+	}
+	\renewcommand*{\glossaryheader}{
+		\bfseries Símbolo & \bfseries Descripción & \bfseries Unidades \\\hline\endhead
+	}
+	\renewcommand*{\glossentry}[2]{
+		\glstarget{##1}{\centering\glossentryname{##1}}
+			& \glossentrydesc{##1}
+			& \glsunit{##1}\tabularnewline
+	}
+}
+
 \makeglossaries
 \loadglsentries{Bib/Glossary.tex}
 \loadglsentries{Bib/Acronyms.tex}
+\loadglsentries{Bib/Symbols.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

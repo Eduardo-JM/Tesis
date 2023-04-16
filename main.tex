@@ -22,22 +22,20 @@
 	\printglossary[
 		style=custommcolalttree,
 		type=\acronymtype,
-		title=Abreviaciones y acrónimos,
-		nonumberlist
+		title=Abreviaciones y acrónimos
 	]
 	
 	\clearpage\newpage
-	\glsfindwidesttoplevelname[symbols]
 	\printglossary[
-		style=custommcolalttree,
-		type=symbols,
+		style=symbolunittable,
 		title=Simbología,
-		nonumberlist
+		type=csymbols
 	]
+	\clearpage\newpage
 	
 	\input{Preamble/Resumen.tex}
 	\glsfindwidesttoplevelname[\glsdefaulttype]
-	\printglossary[style=alttree, nonumberlist]
+	\printglossary[style=alttree]
 	
 	\cleardoublepage
 	\pagenumbering{arabic}
