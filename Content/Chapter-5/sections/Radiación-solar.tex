@@ -37,7 +37,7 @@
 %		Las longitudes de onda entre \qtyrange{700}{1e7}{\nm} son asociadas directamente al calor 
 		
 	
-	\subsection{Irradiancia solar en la Tierra}
+	\subsection{Irradiancia solar en la Tierra}\label{sec:Irradiancia-Tierra}
 	
 		El sol posee una temperatura superficial aproximada de \SI{5778}{\kelvin}, la cual emite calor en forma de radiación constantemente, de la cual, en el tope de la atmósfera terrestre se recibe un valor conocido como constante solar (\gls{G}) cuyo valor actualizado es de \SI{1360.8}{\watt\per\m\tothe{2}} $\pm$ \SI{0.5}{\watt\per\m\tothe{2}}. Sin embargo, no toda esa energía llega a la superficie terrestre~\cref{fig:atenuación-radiación-solar} debido a una serie de factores como el movimiento de rotación y traslación así como la inclinación de la Tierra, las condiciones climáticas y geográficas propias de la zona, del día  y de las interacciones a lo largo de su trayectoria por la atmósfera \cite{garcia_valladares_aplicaciones_2017}.
 		
@@ -48,6 +48,31 @@
 			\label{fig:atenuación-radiación-solar}
 			\floatfoot{Imagen obtenida de \cite{garcia_valladares_aplicaciones_2017}}
 		\end{figure}
+		
+		\subsubsection{Variación con respecto a la latitud}
+			
+			Como se mencionó anteriormente, el recurso solar varía de acuerdo a la latitud (\gls{latitud}). Ignorando la inclinación de la Tierra, esta variación viene dada por~\eqref{equ:irradiancia-latitud}.
+			
+			\begin{equation}
+				\label{equ:irradiancia-latitud}
+				I_{\gls{latitud}} = I_{\text{Superficial}} \times \dfrac{\cos{\gls{latitud}}}{\pi}
+			\end{equation}
+			
+			Esta ecuación deriva de la razón entre el área proyectada y el área superficial verdadera. La Tierra se proyecta como un círculo al recibir la luz solar, sin embargo, en realidad se trata de una vista del área de una esfera. Si tomamos una franja infinitesimal de tamaño $d\phi$, podemos crear los dos rectángulos observados en la~\cref{fig:irradiancia-latitud} donde $r_{\text{E}} $ es el radio de la Tierra.
+			
+			\begin{figure}
+				\centering
+				\includegraphics[
+					width = \linewidth,
+					height = 50mm,
+					keepaspectratio
+				]{Marco-teórico/irradiancia-latitud.png}
+				\caption{Irradiancia solar a latitud $\phi$}
+				\floatfoot{Imagen traducida de \cite{weinstein_solar_nodate}}
+				\label{fig:irradiancia-latitud}
+			\end{figure}
+			
+			Como se observa, intensidad de la radiación solar cae rápidamente y a pesar de ser una cantidad enorme de energía, esta se encuentra dispersa en toda el área superficial real.
 		
 		
 		

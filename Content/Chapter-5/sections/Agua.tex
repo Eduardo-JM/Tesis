@@ -230,3 +230,21 @@
 				\floatfoot{Figuras obtenidas de \cite{atkins_physical_2010}}
 				\label{fig:coligativas-pv}
 			\end{figure}
+			
+	\subsection{Evaporación del agua}
+		
+		La evaporación es el fenómeno que ocurre en la interfase líquido-vapor cuando la presión de vapor es menor que la presión de saturación de un líquido a una temperatura dada. A diferencia de la ebullición, la evaporación puede suceder a cualquier temperatura, adquiriendo mayor rapidez entre más alta es la temperatura. \cite{cengel_transferencia_2010}
+
+		La presión atmosférica es la suma de la presión del aire seco (\gls{paire}) y la presión de vapor (\gls{pvapor}), esta última constituye generalmente menos de un \percent{3} de la presión atmosférica.
+
+		\begin{equation}
+			\gls{patm} = \gls{paire} + \gls{pvapor}
+		\end{equation}
+
+		El aire presenta límites de humedad pues es limitada la cantidad de vapor de agua que puede contener; podemos entonces definir a la humedad relativa (\gls{humedad-relativa}) como la relación de cantidad de vapor de agua real en el aire a determinada temperatura y la máxima cantidad que el aire puede contener a la misma temperatura. Para el aire seco $\gls{humedad-relativa} = 0$ y para el aire saturado $\gls{humedad-relativa} = 1$.
+
+		Podemos entonces especificar por completo la cantidad de humedad en el aire si conocemos la temperatura y la humedad relativa; a su vez podemos relacionar la presión de vapor con la humedad relativa mediante la~\cref{equ:relacion-pv-humedad-r}. Podemos notar que la presión de saturación incrementa conforme más humedad exista en el aire. \cite{cengel_termodinamica_2009}
+
+		\begin{equation}\label{equ:relacion-pv-humedad-r}
+			\gls{pvapor} = \gls{humedad-relativa} P_{\text{sat a T}}
+		\end{equation}

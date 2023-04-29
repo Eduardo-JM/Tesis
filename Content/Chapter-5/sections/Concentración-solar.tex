@@ -1,0 +1,40 @@
+\section{Concentración solar}
+
+	Como se vio en la~\cref{sec:Irradiancia-Tierra}, la energía por unidad de área puede no ser suficiente grande como, sin embargo, se puede aumentar la cantidad de energía por unidad de área a través de la concentración de los rayos del Sol.
+	
+	Para ello se colecta la irradiancia incidente sobre un área y se concentra en una segunda área más pequeña. En un sistema ideal, ese sistema quedaría caracterizado por la razón de concentración superficial la cual se define por~\eqref{equ:areas-concentracion}.
+	
+	\begin{equation}\label{equ:areas-concentracion}
+		C_{\text{área}} = \dfrac{\gls{area}_{\text{entrada}}}{\gls{area}_{\text{salida}}}
+	\end{equation}
+	
+	Dado a que se trabaja en sistemas reales que tienen ineficiencias y defectos, la razón de concentración superficial suele ser solamente una aproximación, por lo que resulta conveniente definir la razón de concentración de flujos \eqref{equ:flujos-concentracion}. Esta nueva razón ya tiene en cuenta las pérdidas del sistema. Ambas razones se puedes relacionar fácilmente a través de la eficiencia de concentración $\gls{efficiency}_{\text{concentración}}$.
+	
+	\begin{equation}\label{equ:flujos-concentracion}
+		C_{\text{flujo}} = \dfrac{\gls{intensity}_{\text{salida}}}{\gls{intensity}_{\text{entrada}}}
+	\end{equation}
+	
+	\begin{equation}\label{equ:relacion-concentracion-flujo-area}
+		C_{\text{flujo}} = \gls{efficiency}_{\text{concentración}} C_{\text{área}}
+	\end{equation}
+	
+	\subsection{Límites de la concentración solar}
+		
+		Aunque uno pueda imaginar que con una lente lo suficientemente grande y un área de concentración lo suficientemente pequeña podamos alcanzar cualquier temperatura, esto no es cierto. Se puede demostrar fácilmente y de formas muy variadas el límite de la concentración solar.
+		
+		\begin{itemize}
+			\item \textbf{Límite termodinámico:}\par
+				\begin{rightbox}{\linewidth minus 48pt}
+					Imaginemos que logramos una relación de concentración superficial tal que:
+					\begin{equation*}
+						\dfrac{A_{\text{entrada}}}{A_{\text{salida}}} \rightarrow \infty
+					\end{equation*}
+					La temperatura que se alcanzaría por un sistema así tendería hacia el infinito violando la segunda ley de la termodinámica.
+				\end{rightbox}
+			\item \textbf{Argumento de geometría óptica:}
+				\begin{rightbox}{\linewidth minus 48pt}
+					Los principios físicos que se aplican para aumentar la intensidad son la reflexión y la refracción, no importa cuál principio sigamos, se trata de un fenómeno reversible, por lo que dos rayos con diferentes suponen dos trayectorias diferentes, es decir, no pueden enfocarse en la misma trayectoria, lo que supone un límite geométrico de la cantidad de rayos que puede enfocar una lente.
+				\end{rightbox}
+			\item \textbf{Conservación de la extensión óptica:}
+		\end{itemize}
+		

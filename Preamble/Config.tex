@@ -164,6 +164,11 @@
 			& \glossentrydesc{##1}
 			& \glsunit{##1}\tabularnewline
 	}
+	\ifglsnogroupskip
+        \renewcommand*{\glsgroupskip}{}%
+    \else
+        \renewcommand*{\glsgroupskip}{}%
+    \fi
 }
 
 \makeglossaries
