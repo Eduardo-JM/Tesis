@@ -146,3 +146,22 @@
   ]\item[]\relax}
  {\enditemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Disable hyphenation temporarily
+\newenvironment{nohyphens}{%
+	\par
+	\hyphenpenalty=10000
+	\exhyphenpenalty=10000
+	\sloppy % Makes TeX obey margins by stretching inter word spaces
+}{\par}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% nohypens shortcut
+%\NewDocumentCommand{\quithyphens}{m}{%
+%	\begin{nohyphens} 
+%		#1 
+%	\end{nohyphens}%
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,14 +1,12 @@
 \section{Concentración solar}
 
-	Como se vio en la~\cref{sec:Irradiancia-Tierra}, la energía por unidad de área puede no ser suficiente grande como, sin embargo, se puede aumentar la cantidad de energía por unidad de área a través de la concentración de los rayos del Sol.
-	
-	Para ello se colecta la irradiancia incidente sobre un área y se concentra en una segunda área más pequeña. En un sistema ideal, ese sistema quedaría caracterizado por la razón de concentración superficial la cual se define por~\eqref{equ:areas-concentracion}.
+	Como se vio en la~\cref{sec:Irradiancia-Tierra}, la energía por unidad de área puede no ser suficiente grande como, sin embargo, se puede aumentar la cantidad de energía por unidad de área a través de la concentración de los rayos del Sol. Un concentrador solar es un tipo de colector solar que es capaz de concentrar la energía solar en un área reducida. Para ello se colecta la irradiancia incidente sobre un área y se concentra en una segunda área más pequeña. En un sistema ideal, ese sistema quedaría caracterizado por la razón de concentración superficial la cual se define por~\eqref{equ:areas-concentracion}.
 	
 	\begin{equation}\label{equ:areas-concentracion}
 		C_{\text{área}} = \dfrac{\gls{area}_{\text{entrada}}}{\gls{area}_{\text{salida}}}
 	\end{equation}
 	
-	Dado a que se trabaja en sistemas reales que tienen ineficiencias y defectos, la razón de concentración superficial suele ser solamente una aproximación, por lo que resulta conveniente definir la razón de concentración de flujos \eqref{equ:flujos-concentracion}. Esta nueva razón ya tiene en cuenta las pérdidas del sistema. Ambas razones se puedes relacionar fácilmente a través de la eficiencia de concentración $\gls{efficiency}_{\text{concentración}}$.
+	Dado a que se trabaja en sistemas reales que tienen ineficiencias y defectos, la razón de concentración superficial suele ser solamente una aproximación, por lo que resulta conveniente definir la razón de concentración de flujos \eqref{equ:flujos-concentracion}. Esta nueva razón ya tiene en cuenta las pérdidas del sistema. Ambas razones se puedes relacionar fácilmente a través de la eficiencia de concentración $\gls{efficiency}_{\text{concentración}}$ mediante~\eqref{equ:relacion-concentracion-flujo-area}.
 	
 	\begin{equation}\label{equ:flujos-concentracion}
 		C_{\text{flujo}} = \dfrac{\gls{intensity}_{\text{salida}}}{\gls{intensity}_{\text{entrada}}}
@@ -36,5 +34,33 @@
 					Los principios físicos que se aplican para aumentar la intensidad son la reflexión y la refracción, no importa cuál principio sigamos, se trata de un fenómeno reversible, por lo que dos rayos con diferentes suponen dos trayectorias diferentes, es decir, no pueden enfocarse en la misma trayectoria, lo que supone un límite geométrico de la cantidad de rayos que puede enfocar una lente.
 				\end{rightbox}
 			\item \textbf{Conservación de la extensión óptica:}
+				\begin{rightbox}{\linewidth minus 48pt}
+					En un sistema de concentración la extensión óptica sólo puede mantenerse constante o aumentar. Se puede lograr un decremento en el esparcimiento óptico pero aumentará el esparcimiento espacial y de manera contraria, al decrecer el esparcimiento espacial aumentará el esparcimiento óptico.
+				\end{rightbox}
 		\end{itemize}
 		
+	\subsection{Clasificación de concentradores solares}
+	
+		La propuesta de \cite{leutz_nonimaging_2001} sugiere clasificarlos de acuerdo a su principio óptico, es decir:
+
+		\begin{itemize}
+			\item Reflexión para espejos concentradores
+			\item Refracción para geometrías de concentración basadas en lentes o lentes de Fresnel
+			\item Dispersión para concentradores basados en el poder dispersivo de prismas u hologramas
+			\item \Gls{fluorescencia} (\gls{luminiscencia}) para concentradores de radiación global por medio de tintes fluorescentes incrustados en una placa plana de vidrio o plástico.
+		\end{itemize}
+
+		No obstante, los concentradores solares generalmente están compuestos de una combinación de estos principios, pero aún así se pueden distinguir dos clases de concentradores solares basados en su diseño óptico y las propiedades de formación de imagen.
+
+		\begin{itemize}
+			\item Concentradores con formación de imagen (generalmente no son ideales)
+			\item Concentradores sin formación de imagen (presentan comportamiento cercano al ideal)
+		\end{itemize}
+		
+		\subsubsection{Concentradores sin formación de imagen}
+			
+			Un sistema óptico sin formación de imágenes está diseñado para concentrar la radiación con la mayor densidad posible, pretendiendo alcanzar el comportamiento ideal teórico de concentración. Así mismo por definición, el sistema óptico no produce una imagen de la fuente de luz.
+	
+	 \subsection{Lentes de Fresnel}
+	 	
+	 	

@@ -74,10 +74,34 @@
 			
 			Como se observa, intensidad de la radiación solar cae rápidamente y a pesar de ser una cantidad enorme de energía, esta se encuentra dispersa en toda el área superficial real.
 		
+		\subsubsection{Direccionalidad de la radiación solar}
+			
+			El Sol se proyecta en el cielo como un círculo, no como un punto, haciendo que sea una fuente de luz imperfecta cuyos rayos no son perfectamente colimados ya que vienen con una ligera desviación angular que se puede aproximar mediante \eqref{equ:half-divergence-angle}.
+			
+			\begin{equation}\label{equ:half-divergence-angle}
+				\gls{half-angle-sun} = \arctan\left(\dfrac{\gls{r-sun}}{\gls{d-sun-earth}}\right)
+			\end{equation}
 		
-		
-		
-	
-		
-		
-		
+	\subsection{Potencial solar en México}
+
+			México se encuentra en una zona geográfica de alta irradiación solar, como se aprecia en la~\cref{fig:radiacion-solar-promedio-mexico}, diariamente se recibe un promedio mínimo de \SI{4.4}{\kWh\per\m\tothe{2}} y un máximo de \SI{6.3}{\kWh\per\m\tothe{2}} según la zona geográfica, lo que lo sitúa como un país con alta capacidad en energía solar.
+
+			\begin{figure}[H]
+			\centering
+			\begin{subfigure}[b]{0.45\textwidth}
+				\centering
+				\includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/radiación-solar-promedio-mundial.png}
+				\caption{Radiación solar promedio en el mundo}
+				\label{fig:radiacion-solar-promedio-mundial}
+			\end{subfigure}
+			\hfill
+			\begin{subfigure}[b]{0.45\textwidth}
+				\centering
+				\includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/radiación-solar-promedio-mexico.png}
+				\caption{Radiación solar promedio en México}
+				\label{fig:radiacion-solar-promedio-mexico}
+			\end{subfigure}
+			\caption{Radiación solar}
+			\floatfoot{Imágenes obtenidas de \cite{garcia_valladares_aplicaciones_2017}}
+			\label{fig:radiacion-solar}
+		\end{figure}

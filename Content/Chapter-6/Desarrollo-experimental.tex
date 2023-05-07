@@ -1,0 +1,127 @@
+\chapter{Desarrollo experimental}
+	
+	Este trabajo busca realizar una investigación cuasi-experimental para reportar el comportamiento  del destilador solar propuesto de acuerdo a la influencia de las variables independientes descritas en la~\cref{table:variables-independientes-desarrollo-experimental}.
+	
+	\begin{longtblr}[
+		caption = {Variables del desarrollo experimental},
+		label = {table:variables-independientes-desarrollo-experimental},
+		note{*} = {Se puede ejercer control directo sobre esta variable.}
+	]{
+		colspec = {X[l] c c X[2, l]},
+		hlines,
+		vlines,
+		row{odd} = {bg=tablerowblue},
+		row{1} = {
+			bg = tabletitleblue,
+			fg=white,
+			font = \bfseries,
+			halign=c
+		},
+		rowhead = 1,
+		rows={m}
+	}
+		Variable & Clasificación & Tipo de dato & Influencia en el modelo\\
+		Temperatura de entrada del agua\TblrNote{*}
+			& Independiente
+			& Cuantitativa
+			& Establece la temperatura inicial del modelo térmico para la ebullición del agua\\
+		Presión atmosférica
+			& Independiente
+			& Cuantitativa
+			& Modifica la temperatura a la cual sucede el cambio de fase del agua\\
+		Temperatura ambiente
+			& Independiente
+			& Cuantitativa
+			& Influye en las pérdidas de calor que tendrá el sistema\\
+		Clima (nubosidad)
+			& Independiente
+			& Cualitativa
+			& Punto de comparación rápido para ver la influencia de la nubosidad sobre el desempeño\\
+		Velocidad de viento
+			& Independiente
+			& Cuantitativa
+			& Se asocia directamente a las pérdidas de calor por convección\\
+		Hola del día
+			& Independiente
+			& Cuantitativa
+			& Determina la posición angular del Sol y se relaciona con la irradiación solar\\
+		Irradiación solar promedio
+			& Independiente
+			& Cuantitativa
+			& Determina la potencia solar recibida en nuestro modelo de transferencia de calor\\
+		Temperatura de salida del agua
+			& Dependiente
+			& Cuantitativa
+			& Asociada al cambio de fase del agua\\
+		Temperatura del recibidor solar
+			& Dependiente
+			& Cuantitativa
+			& Influye en los modelos térmicos para la destilación del agua\\
+		Caudal de agua\TblrNote{*} 
+			& Dependiente
+			& Cuantitativa
+			& Influye en los modelos térmicos y la tasa de desalinización\\
+		Propiedades físico-químicas del agua
+			& Dependiente
+			& Cuantitativa
+			& Indica la calidad del agua
+	\end{longtblr}
+	
+	\section{Grupo de control}
+		
+		Con base en las variables observadas en la~\cref{table:variables-independientes-desarrollo-experimental} se distinguieron los grupos de control descritos en las sub-secciones siguientes.
+		
+		\subsection{Agua}
+			
+			Las muestras de agua se seleccionaron guiándose en la~\cref{table:clasificacion-agua-tds}. Para ello, la obtención de agua de mar se simula con sales marinas para acuario y se proponen 3 grupos de control descritos en la~\cref{table:grupo-control-agua} para evaluar los casos límite y promedio de la salinidad del agua de mar.
+			
+			\begin{longtblr}[
+				caption = {Grupo de control del agua de mar},
+				label = {table:grupo-control-agua}
+			]{
+				colspec = {X[c] X[2, c]},
+				hlines,
+				vlines,
+				width = 0.5\linewidth,
+				row{odd} = {bg=tablerowblue},
+				row{1} = {
+					bg = tabletitleblue,
+					fg=white,
+					font = \bfseries,
+					halign=c
+				},
+				rows={m}
+			}
+				Muestra & Salinidad (\unit{\mg\per\litre})\\
+				1 & \num{30000}\\
+				2 & \num{35000}\\
+				3 & \num{40000}
+			\end{longtblr}
+		
+		\subsection{Lugar físico de experimentación}
+			
+			Debido al alcance del proyecto, se acotó el lugar físico de experimentación a la Unidad Profesional Interdisciplinaria en Ingeniería y Tecnologías Avanzadas ubicada en la Ciudad de México.
+			
+			\begin{longtblr}[
+				caption = {Grupo de control del agua de mar},
+				label = {table:grupo-control-fisico}
+			]{
+				colspec = {X[c] *{3}{c}},
+				hlines,
+				vlines,
+				width = 0.8\linewidth,
+				row{odd} = {bg=tablerowblue},
+				row{1} = {
+					bg = tabletitleblue,
+					fg=white,
+					font = \bfseries,
+					halign=c
+				},
+				rows={m}
+			}
+				Zona & Longitud & Latitud & Altitud\\
+				Ciudad de México, México
+					& \ang{-99;07;32}
+					& \ang{19;30;38}
+					& \qty{2241}{\m}
+			\end{longtblr}
