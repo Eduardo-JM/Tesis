@@ -3,7 +3,7 @@
 	Como se vio en la~\cref{sec:Irradiancia-Tierra}, la energía por unidad de área puede no ser suficiente grande como, sin embargo, se puede aumentar la cantidad de energía por unidad de área a través de la concentración de los rayos del Sol. Un concentrador solar es un tipo de colector solar que es capaz de concentrar la energía solar en un área reducida. Para ello se colecta la irradiancia incidente sobre un área y se concentra en una segunda área más pequeña. En un sistema ideal, ese sistema quedaría caracterizado por la razón de concentración superficial la cual se define por~\eqref{equ:areas-concentracion}.
 	
 	\begin{equation}\label{equ:areas-concentracion}
-		C_{\text{área}} = \dfrac{\gls{area}_{\text{entrada}}}{\gls{area}_{\text{salida}}}
+		\gls{area-concentration-ratio} = \dfrac{\gls{area}_{\text{entrada}}}{\gls{area}_{\text{salida}}}
 	\end{equation}
 	
 	Dado a que se trabaja en sistemas reales que tienen ineficiencias y defectos, la razón de concentración superficial suele ser solamente una aproximación, por lo que resulta conveniente definir la razón de concentración de flujos \eqref{equ:flujos-concentracion}. Esta nueva razón ya tiene en cuenta las pérdidas del sistema. Ambas razones se puedes relacionar fácilmente a través de la eficiencia de concentración $\gls{efficiency}_{\text{concentración}}$ mediante~\eqref{equ:relacion-concentracion-flujo-area}.
@@ -13,7 +13,7 @@
 	\end{equation}
 	
 	\begin{equation}\label{equ:relacion-concentracion-flujo-area}
-		C_{\text{flujo}} = \gls{efficiency}_{\text{concentración}} C_{\text{área}}
+		C_{\text{flujo}} = \gls{efficiency}_{\text{concentración}} \gls{area-concentration-ratio}
 	\end{equation}
 	
 	\subsection{Límites de la concentración solar}
@@ -35,7 +35,7 @@
 				\end{rightbox}
 			\item \textbf{Conservación de la extensión óptica:}
 				\begin{rightbox}{\linewidth minus 48pt}
-					En un sistema de concentración la extensión óptica sólo puede mantenerse constante o aumentar. Se puede lograr un decremento en el esparcimiento óptico pero aumentará el esparcimiento espacial y de manera contraria, al decrecer el esparcimiento espacial aumentará el esparcimiento óptico.
+					En un sistema de concentración la extensión óptica (muchas veces referida como el \gls{etendue}) sólo puede mantenerse constante o aumentar. Se puede lograr un decremento en el esparcimiento óptico pero aumentará el esparcimiento espacial y de manera contraria, al decrecer el esparcimiento espacial aumentará el esparcimiento óptico.
 				\end{rightbox}
 		\end{itemize}
 		
@@ -60,7 +60,45 @@
 		\subsubsection{Concentradores sin formación de imagen}
 			
 			Un sistema óptico sin formación de imágenes está diseñado para concentrar la radiación con la mayor densidad posible, pretendiendo alcanzar el comportamiento ideal teórico de concentración. Así mismo por definición, el sistema óptico no produce una imagen de la fuente de luz.
-	
-	 \subsection{Lentes de Fresnel}
+		
+		\subsubsection{Clasificación por la geometría de concentración}
+			
+			Un concentrador se considera de dos dimensiones (2D) si los rayos de luz recibidos se enfocan sobre una línea de acción. El \gls{etendue} de un sistema 2D está dado por~\eqref{equ:etendue-2d}
+			
+			\begin{equation}\label{equ:etendue-2d}
+				A_{\text{entrada}}\sin\gls{half-angle-sun} = A_{\text{salida}}\sin\theta_{\text{salida}}
+			\end{equation}
+			
+			Por lo tanto la razón de concentración superficial está dada por~\eqref{equ:2d-concentration-ratio} cuyo máximo ideal se alcanzaría cuando \(\sin\theta_{\text{salida}} = 1\).
+			
+			\begin{equation}\label{equ:2d-concentration-ratio}
+				\gls{area-concentration-ratio}_{\text{\ 2D}} = \dfrac{\sin\theta_{\text{salida}}}{\sin\gls{half-angle-sun}}
+			\end{equation}
+			
+			Un concentrador se considera de tres dimensiones (3D) si los rayos de luz recibidos se enfocan sobre un punto (En realidad un área pequeña). El \gls{etendue} de un sistema 3D está dado por~\eqref{equ:etendue-3d}
+			
+			\begin{equation}\label{equ:etendue-3d}
+				A_{\text{entrada}}\sin^{2}\gls{half-angle-sun} = A_{\text{salida}}\sin^{2}\theta_{\text{salida}}
+			\end{equation}
+			
+			Por lo tanto la razón de concentración superficial está dada por~\eqref{equ:3d-concentration-ratio} cuyo máximo ideal se alcanzaría cuando \(\sin^{2}\theta_{\text{salida}} = 1\)
+			
+			\begin{equation}\label{equ:3d-concentration-ratio}
+				\gls{area-concentration-ratio}_{\text{\ 3D}} = \left(\dfrac{\sin\theta_{\text{salida}}}{\sin\gls{half-angle-sun}}\right)^{2}
+			\end{equation}
+			
+			Notemos que:
+			
+			\begin{equation}\label{equ:2d-3d-concentration-ratio}
+				\gls{area-concentration-ratio}_{\text{\ 2D}} = \sqrt{\gls{area-concentration-ratio}_{\text{\ 3D}}}
+			\end{equation}
+			
+			Podemos reescribir \eqref{equ:etendue-3d} en términos de los índices de refracción del medio que rodea al emisor \(\gls{refraction-index}_{emisor}\) y al concentrador \(\gls{refraction-index}_{concentrador}\). La ecuación~\cref{equ:3d-concentration-ratio-refraction} sigue obedeciendo a~\eqref{equ:2d-3d-concentration-ratio}
+			
+			\begin{equation}\label{equ:3d-concentration-ratio-refraction}
+				\gls{area-concentration-ratio}_{\text{\ 3D}} = \left(\dfrac{\gls{refraction-index}_{\text{concentrador}}}{\gls{refraction-index}_{\text{emisor}}}\right)^{2}
+			\end{equation}
+			
+%		\subsection{Lentes de Fresnel}
 	 	
 	 	
