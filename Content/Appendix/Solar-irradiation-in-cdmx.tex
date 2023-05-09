@@ -1,0 +1,208 @@
+\chapter{Código en jupyter julia para analizar las condiciones de la energía solar térmica en la CDMX}
+\label{ch:solar-irradiation-code}
+
+\section*{Paquetes importados}
+
+\begin{lstlisting}
+using Pkg
+Pkg.add("Plots")
+Pkg.add("HTTP")
+Pkg.add("CategoricalArrays")
+Pkg.add("DataFrames")
+Pkg.add("CSV")
+Pkg.add("Missings")
+Pkg.add("Statistics")
+
+using HTTP
+using DataFrames
+using CSV
+using CategoricalArrays
+using Missings
+using Statistics
+using Plots
+\end{lstlisting}
+
+\section*{Declaración de diccionarios}
+
+\begin{lstlisting}
+parameters = Dict(
+	"hourly" => [
+		"PS",
+		"WS2M",
+		"QV2M",
+		"CLRSKY_SFC_SW_DWN",
+		"ALLSKY_SFC_SW_DWN",
+		"CLOUD_AMT",
+		"ALLSKY_SFC_UVA",
+		"ALLSKY_SFC_UVB"
+	]
+);
+
+descriptions = Dict(
+	"PS" => [
+		"Surface Pressure",
+		"The average of surface pressure at the surface of the earth.",
+		"kPa"
+	],
+	"WS2M" => [
+		"Wind Speed at 2 Meters",
+		"The average of wind speed at 2 meters above the surface of the earth.",
+		"m/s"
+	],
+	"QV2M" => [
+		"Specific Humidity at 2 Meters",
+		"The ratio of the mass of water vapor to the total mass of air at 2 meters (kg water/kg total air).",
+		"g/kg"
+	],
+	"CLRSKY_SFC_SW_DWN" => [
+		"Clear Sky Surface Shortwave Downward Irradiance",
+		"""The total solar irradiance incident (direct plus diffuse) on a horizontal plane at the surface of the earth under clear sky conditions. An alternative term for the total solar irradiance is the "Global Horizontal Irradiance" or GHI.""",
+		"Whr/m^2"
+	],
+	"ALLSKY_SFC_SW_DWN" => [
+		"All Sky Surface Shortwave Downward Irradiance",
+		"""The total solar irradiance incident (direct plus diffuse) on a horizontal plane at the surface of the earth under all sky conditions. An alternative term for the total solar irradiance is the "Global Horizontal Irradiance" or GHI.""",
+		"Whr/m^2"
+	],
+	"CLOUD_AMT" => [
+		"Cloud Amount",
+		"The average percent of cloud amount during the temporal period.",
+		"%"
+	],
+	"ALLSKY_SFC_UVA" => [
+		"All Sky Surface UVA Irradiance",
+		"The ultraviolet A (UVA 315nm-400nm) irradiance under all sky conditions.",
+		"W/m^2"
+	],
+	"ALLSKY_SFC_UVB" => [
+		"All Sky Surface UVB Irradiance",
+		"The ultraviolet B (UVB 280nm-315nm) irradiance under all sky conditions.",
+		"W/m^2"
+	]
+);
+
+months = Dict(
+	1 => "Enero",
+	2 => "Febrero",
+	3 => "Marzo",
+	4 => "Abril",
+	5 => "Mayo",
+	6 => "Junio",
+	7 => "Julio",
+	8 => "Agosto",
+	9 => "Septiembre",
+	10 => "Octubre",
+	11 => "Noviembre",
+	12 => "Diciembre"
+);
+\end{lstlisting}
+
+\section*{Constantes para la construcción de la URL}
+
+\begin{lstlisting}
+const LATITUDE::Float64 = 19.3038;
+const LONGITUDE::Float64 = -99.0732;
+START_DATE::Int64 = 20180101;
+END_DATE::Int64 = 20221231;
+\end{lstlisting}
+
+\section*{Constantes}
+
+\begin{lstlisting}
+START_HOUR::Int64 = 4;
+END_HOUR::Int64 = 18;
+\end{lstlisting}
+
+\section*{Solicitud de datos a la base de datos Power Larc de la NASA}
+
+\begin{lstlisting}
+path = joinpath(pwd(), "files");
+if !isdir(path)
+	mkdir(path)
+end
+for key in keys(parameters)
+	URL::String = string(
+		"https://power.larc.nasa.gov/api/temporal/$key/point",
+		"?parameters=",
+		join(parameters[key], ","),
+		"&community=RE",
+		"&longitude=$LONGITUDE",
+		"&latitude=$LATITUDE",
+		"&start=$START_DATE",
+		"&end=$END_DATE",
+		"&format=CSV"
+	);
+	download(URL, joinpath(path, "$START_DATE-$END_DATE-$key.csv"))
+end
+\end{lstlisting}
+
+\section*{Tratamiento y análisis de datos}
+
+Nota: Se confía en la fuente, por lo que se asume que no existen valores nulos en el DataFrame. Sin embargo, se observa que hay valores para rellenar iguales a -999. Se observa que estos valores son consecutivos a partir del 01/04/2022. Se espera que sea debido al periodo de recolección que pasa de ser cada hora a diario. Se buscará entonces otro dataset. Se encontró que en efecto, desde esa fecha no hay datos, aunque al corregirlo a diario, se reduce de 5 a 3 columnas la falta de datos, aunque aún se observan algunos datos faltantes.
+
+\begin{lstlisting}
+na_val = -999;
+min_year::Int64 = trunc(Int, (START_DATE/10000));
+max_year::Int64 = trunc(Int, (END_DATE/10000));
+graphs_path = joinpath(pwd(), "graphs");
+if !isdir(graphs_path)
+	mkdir(graphs_path)
+end
+
+for file in readdir(path)
+	df = DataFrame(CSV.File(joinpath(path, file), header=17))
+	subset!(
+		df,
+		names(df) .=> ByRow(x -> x != na_val),
+		:HR => ByRow(x -> x >= START_HOUR && x <= END_HOUR),
+		:YEAR => ByRow(x -> x >= min_year)
+	)
+
+	if (isequal(file[19:end-4], "hourly"))
+		gd = groupby(df, [:HR, :MO, :YEAR])
+	else
+		gd = groupby(df, [:MO, :YEAR])
+	end
+
+	mean_dg = combine(gd, parameters[file[19:end-4]] .=> mean)
+	println(describe(mean_dg))
+
+	for description in keys(descriptions)
+		for hour in START_HOUR : END_HOUR
+			plot_data = filter(row -> row.HR === hour, mean_dg)
+			figure = plot(
+				[months[x] for x in minimum(plot_data.MO) : maximum(plot_data.MO)],
+				[
+					filter(row -> row.YEAR === year, plot_data)[:, string(description, "_mean")]
+						for year in min_year : max_year -1
+				],
+				title = "$(descriptions[description][1]) at $hour",
+				label = ["2018" "2019" "2020" "2021"],
+				ylabel = "[$(descriptions[description][3])]",
+				xlabel = "Mes",
+				xrotation = 90
+			);
+			savefig(joinpath(graphs_path, string(description, "_", hour, ".png")))
+		end
+	end
+	for description in keys(descriptions)
+		figure = plot();
+		for year in min_year : max_year -1
+			plot_data = filter(row -> row.YEAR === year, mean_dg)
+			figure = plot!(
+				[plot_data.HR],
+				[months[x] for x in plot_data.MO],
+				plot_data[:, string(description, "_mean")],
+				title = "$(descriptions[description][1])",
+				label = "$year",
+				zlabel = "[$(descriptions[description][3])]",
+				xlabel = "Hora",
+				ylabel = "Mes",
+				yrotation = 90
+			);
+		end
+		savefig(joinpath(graphs_path, string(description, "_3d.png")))
+	end
+end
+\end{lstlisting}
+

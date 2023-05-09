@@ -83,6 +83,7 @@
 				hlines,
 				vlines,
 				width = 0.5\linewidth,
+				rowhead = 1,
 				row{odd} = {bg=tablerowblue},
 				row{1} = {
 					bg = tabletitleblue,
@@ -110,6 +111,7 @@
 				hlines,
 				vlines,
 				width = 0.8\linewidth,
+				rowhead = 1,
 				row{odd} = {bg=tablerowblue},
 				row{1} = {
 					bg = tabletitleblue,
@@ -125,3 +127,50 @@
 					& \ang{19;30;38}
 					& \qty{2241}{\m}
 			\end{longtblr}
+			
+			\subsubsection{Variables climáticas sobre la región a investigar}
+				
+				\begin{longtblr}[
+					caption = {Variables climáticas consideradas importantes para la investigación},
+					label = {table:variables-climaticas}
+				]{
+					colspec = {X[c] X[3, l] c},
+					hlines,
+					vlines,
+					width = \linewidth,
+					row{odd} = {bg=tablerowblue},
+					rowhead = 1,
+					row{1} = {
+						bg = tabletitleblue,
+						fg=white,
+						font = \bfseries,
+						halign=c
+					},
+					rows={m}
+				}
+					Variable & Descripción & Unidades\\
+					Presión superficial
+						& Presión promedio en la superficie del lugar
+						& \unit{\kilo\pascal}\\
+					Velocidad de viento
+						& Velocidad de viento promedio a 2 metros sobre la superficie del lugar
+						& \unit{\m\per\s}\\
+					Humedad específica
+						& Razón promedio de la masa de vapor de agua por unidad de aire a 2 metros sobre la superficie del lugar
+						& \unit{\gram\per\kg}\\
+					Irradiación de onda corta sobre cielo despejado
+						& Total de irradiación solar incidida (directa más difusa) sobre la tierra en un plano horizontal sobre la superficie de la tierra a condiciones de cielo despejado.
+						& \unit{\watt\hour\per\m\tothe{2}}\\
+					Irradiación de onda corta
+						& Total de irradiación solar incidida (directa más difusa) sobre la tierra en un plano horizontal sobre la superficie de la tierra a todas las condiciones.
+						& \unit{\watt\hour\per\m\tothe{2}}\\
+					Nubosidad
+						& Porcentaje promedio de cantidad de nubes en el cielo sobre un lapso determinado
+						& \unit{\watt\hour\per\m\tothe{2}}\\
+					Irradiancia UVA
+						& Radiación UVA (\qtyrange{315}{400}{\nm}) total incidida a todas las condiciones climáticas del día
+						& \unit{\watt\per\m\tothe{2}}\\
+					Irradiancia UVB
+						& Radiación UVB (\qtyrange{280}{315}{\nm}) total incidida a todas las condiciones climáticas del día
+						& \unit{\watt\per\m\tothe{2}}	
+				\end{longtblr}
