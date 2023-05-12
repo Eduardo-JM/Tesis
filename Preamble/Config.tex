@@ -51,7 +51,7 @@
 \setmainfont{Times New Roman}
 
 \titleformat{\chapter}[display]
-    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge\raggedright}
 \titlespacing*{\chapter}{0pt}{0pt}{0pt}
 
 % Define a new Font family, use only if it doesn't recognize your fonts
@@ -221,6 +221,9 @@
 \definecolor{cred}{RGB}{190, 60, 45}
 \definecolor{lightgray}{RGB}{201, 201, 201}
 
+\definecolor{primary-code}{RGB}{32, 79, 119}
+\definecolor{secondary-code}{RGB}{66, 160, 200}
+\definecolor{accent-code}{RGB}{94, 116, 209}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -277,7 +280,27 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Tcolorbox
+% Listings
 
+\crefname{lstlisting}{el bloque de instrucciones}{los bloques de instrucciones}
+\Crefname{lstlisting}{El bloque de instrucciones}{Los bloques de instrucciones}
+\renewcommand{\lstlistingname}{Bloque de instrucciones}
 
+\lstset{frame=tbrl,
+	language=Python,
+	backgroundcolor=\color{background},
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	keywordstyle=\color{primary-code},
+	stringstyle=\color{secondary-code},
+	commentstyle=\color{accent-code},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3,
+	literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {ñ}{{\~n}}1
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
