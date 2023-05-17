@@ -130,9 +130,12 @@
 			
 			\subsubsection{Variables climáticas sobre la región a investigar}
 				
+				Debido a la naturaleza de nuestra fuente de energía y que su operación no transcurren dentro de un ambiente controlado se deben evaluar las condiciones climáticas del lugar que impactan en mayor medida el sistema propuesto.
+				
 				\begin{longtblr}[
 					caption = {Variables climáticas consideradas importantes para la investigación},
-					label = {table:variables-climaticas}
+					label = {table:variables-climaticas},
+					note{?} = {Se decidió incluir en el estudio a esta variable dado a que no se sabe con certeza si será necesaria para el futuro desarrollo.}
 				]{
 					colspec = {X[c] X[3, l] c},
 					hlines,
@@ -158,21 +161,139 @@
 					Humedad específica
 						& Razón promedio de la masa de vapor de agua por unidad de aire a 2 metros sobre la superficie del lugar
 						& \unit{\gram\per\kg}\\
-					Irradiación de onda corta sobre cielo despejado
+					\acrfull{roc} sobre cielo despejado
 						& Total de irradiación solar incidida (directa más difusa) sobre la tierra en un plano horizontal sobre la superficie de la tierra a condiciones de cielo despejado.
 						& \unit{\watt\hour\per\m\tothe{2}}\\
-					Irradiación de onda corta
+					\acrlong{roc}
 						& Total de irradiación solar incidida (directa más difusa) sobre la tierra en un plano horizontal sobre la superficie de la tierra a todas las condiciones.
 						& \unit{\watt\hour\per\m\tothe{2}}\\
 					Nubosidad
 						& Porcentaje promedio de cantidad de nubes en el cielo sobre un lapso determinado
 						& \unit{\watt\hour\per\m\tothe{2}}\\
-					Irradiancia UVA
+					Irradiancia UVA\TblrNote{?}
 						& Radiación UVA (\qtyrange{315}{400}{\nm}) total incidida a todas las condiciones climáticas del día
 						& \unit{\watt\per\m\tothe{2}}\\
-					Irradiancia UVB
+					Irradiancia UVB\TblrNote{?}
 						& Radiación UVB (\qtyrange{280}{315}{\nm}) total incidida a todas las condiciones climáticas del día
 						& \unit{\watt\per\m\tothe{2}}	
 				\end{longtblr}
-				
-				
+
+	\section{Selección del elemento óptico de concentración}
+		
+		Para este proyecto son accesibles 4 modelos de lentes de Fresnel cuyas características se ven resumidas en la~\cref{table:fresnel-lenses-models}.
+		
+		% Página 36
+		\begin{longtblr}[
+			caption = {Modelos y características de los concentradores solares},
+			label = {table:fresnel-lenses-models}
+		]{
+			colspec = {*{2}{X[1.5]} *{2}{X} X[2.5] *{2}{X}},
+			hlines,
+			vlines,
+			width = \linewidth,
+			rowhead = 2,
+			row{odd[3]} = {bg=tablerowblue},
+			row{1,2} = {
+				bg = tabletitleblue,
+				fg=white,
+				font = \bfseries,
+				halign=c
+			},
+			rows={
+				halign = c,
+				valign = m
+			}
+		}
+			Modelo & Longitud focal & Ancho & Largo & Material & Grosor & Tamaño de ranura\\
+			--- & mm & mm & mm & --- & mm & mm\\
+			CP220-280
+				& \num{220}
+				& \num{280}
+				& \num{280}
+				& PMMA: \acrshort{pvuvc}
+				& \num{5}
+				& \num{0.5}\\
+			CP330-280
+				& \num{330}
+				& \num{280}
+				& \num{280}
+				& PMMA: \acrshort{pvuvc}
+				& \num{5}
+				& \num{0.5}\\
+			CP350-300 
+				& \num{350}
+				& \num{310}
+				& \num{310}
+				& PMMA: \acrshort{pvuvc}
+				& \num{5}
+				& \num{0.5}\\
+			CP350-330 
+				& \num{350}
+				& \num{340}
+				& \num{340}
+				& PMMA: \acrshort{pvuvc}
+				& \num{5}
+				& \num{0.5}
+		\end{longtblr}
+		
+		Para lograr la selección adecuada del elemento óptico de concentración se debe buscar comparar teóricamente los impactos que tendría su implementación en el modelo.
+	
+	\section{Diseño de la cámara de concentración solar}
+		
+		\subsection{Recibidor solar}
+			
+			Para el recibidor solar se comparó (\cref{table:comparacion-material-recibidor}) la propuesta de dos materiales típicamente usados para la manufactura de recibidores solares.
+									
+			\begin{longtblr}[
+				caption = {Comparativa hallada entre los materiales propuestos para fungir como recibidor solar},
+				label = {table:comparacion-material-recibidor},
+			]{
+				colspec = {l c *{2}{X[c]}},
+				hlines,
+				vlines,
+				row{odd} = {bg=tablerowblue},
+				row{1} = {
+					bg = tabletitleblue,
+					fg=white,
+					font = \bfseries,
+					halign=c
+				},
+				rowhead = 1,
+				rows={m}
+			}
+				Propiedad & Unidades & Cobre & Carburo de Silicio\\
+				Conductividad térmica 
+					& \unit{\watt\per\m\kelvin}
+					& \numrange{387.0}{430.0}% \cite{leonel_lira_cortes_conductividad_2010}
+					& \numrange{120}{130}\\ % https://www.gab-neumann.com/Carburo-de-silicio-Propiedades https://geologiaweb.com/materiales/carburo-de-silicio/
+				Coficiente de expansión térmica 
+					& \unit{\per\degreeCelsius}
+					& \num{16.5e-6}
+					& \num{4e-6}\\
+				Densidad
+					& \unit{\kg\per\m\tothe{3}}
+					& 8620
+					& 3210\\
+				Resistencia a la corrosión
+					& ---
+					& Menor
+					& Mayor\\
+				Costo
+					& MXN
+					& Menor
+					& Mayor\\
+				Accesibilidad
+					& ---
+					& Mayor
+					& Menor\\
+				Propiedades ópticas
+					& ---
+					& Alta reflectividad de luz en el espectro visible
+					& Se puede manufacturar para tener buena absortividad
+			\end{longtblr}
+			
+		\subsection{Almacenamiento térmico de calor}	
+			
+			Como se ha resaltado a lo largo del texto, el sol es una fuente intermitente de energía, por lo que se propone un mecanismo de almacenamiento térmico de calor empleando arena de sílice.
+			
+			

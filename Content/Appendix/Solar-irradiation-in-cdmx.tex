@@ -1,4 +1,4 @@
-\chapter{Código en jupyter julia para analizar las condiciones de la energía solar térmica en la CDMX}
+\chapter{Código de julia para analizar las condiciones de la energía solar térmica en la CDMX}
 \label{ch:solar-irradiation-code}
 
 \section*{Paquetes importados}
@@ -202,6 +202,28 @@ for file in readdir(path)
 			);
 		end
 		savefig(joinpath(graphs_path, string(description, "_3d.png")))
+	end
+	
+	md = groupby(df, [:DY, :MO, :YEAR])
+	irradiation_keys = filter(key -> occursin("SFC", key), keys(descriptions))
+	sum_md = combine(md, irradiation_keys .=> sum)
+
+	for key in irradiation_keys
+		for year in min_year : max_year -1
+		    data2plot = filter(row -> row.YEAR === year, sum_md)
+			surface(
+				[months[x] for x in data2plot.MO],
+				[data2plot.DY],
+				data2plot[:, string(key, "_sum")],
+				title = "$(descriptions[key][1]) in $year",
+				#label = "$year",
+				zlabel = "[$(descriptions[key][3]) día]",
+				xlabel = "Mes",
+				ylabel = "Día",
+				xrotation = 90
+			)
+			savefig(joinpath(graphs_path, string(key, "_surface_", year, "_3d.png")))
+		end
 	end
 end
 \end{lstlisting}
