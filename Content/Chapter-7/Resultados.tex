@@ -252,16 +252,46 @@
 			\dfrac{\dot{Q}}{\dot{m}} = \left(\gls{cs}_{\text{agua}} \Delta T + \gls{hl}\right)
 		\end{equation}
 		
-		Para conocer $\gls{cs}_{\text{agua}}$ de la \cref{table:Conductividad-térmica-agua-salada} se usa \eqref{equ:interpolación-lineal-simple} para obtener la conductividad estimada a los \qty{13}{\degreeCelsius} y a los \qty{94.7}{\degreeCelsius}.
+		Para conocer $\gls{cs}_{\text{agua}}$ de la \cref{table:Calor-específico-agua} se usa \eqref{equ:interpolación-lineal-simple} para obtener el calor específico estimado a los \qty{13}{\degreeCelsius} y a los \qty{94.7}{\degreeCelsius}.
 		
 		\begin{align*}
-			\gls{cs}_{13} &= \qty{0.586}{\watt\per\m\kelvin} + \dfrac{\qty{0.601}{\watt\per\m\kelvin} - \qty{0.586}{\watt\per\m\kelvin}}{\qty{20}{\degreeCelsius}-\qty{10}{\degreeCelsius}} \times (\qty{20}{\degreeCelsius} - \qty{13}{\degreeCelsius})\\
-			\gls{cs}_{13} &= \qty{0.591}{\watt\per\m\kelvin}\\
-			\gls{cs}_{94.7} &= \qty{0.670}{\watt\per\m\kelvin} + \dfrac{\qty{0.674}{\watt\per\m\kelvin} - \qty{0.670}{\watt\per\m\kelvin}}{\qty{100}{\degreeCelsius}-\qty{90}{\degreeCelsius}} \times (\qty{100}{\degreeCelsius} - \qty{94.7}{\degreeCelsius})\\
-			\gls{cs}_{94.7} &= \qty{0.672}{\watt\per\m\kelvin}
+			\gls{cs}_{13} &= \qty{3968.1}{\joule\per\kg\kelvin} + \dfrac{\qty{3973.4}{\joule\per\kg\kelvin} - \qty{3968.1}{\joule\per\kg\kelvin}}{\qty{20}{\degreeCelsius}-\qty{10}{\degreeCelsius}} \times (\qty{20}{\degreeCelsius} - \qty{13}{\degreeCelsius})\\
+			\gls{cs}_{13} &= \qty{3971.8}{\joule\per\kg\kelvin}\\
+			\gls{cs}_{94.7} &= \qty{4010.5}{\joule\per\kg\kelvin} + \dfrac{\qty{4019.9}{\joule\per\kg\kelvin} - \qty{4010.5}{\joule\per\kg\kelvin}}{\qty{100}{\degreeCelsius}-\qty{90}{\degreeCelsius}} \times (\qty{100}{\degreeCelsius} - \qty{94.7}{\degreeCelsius})\\
+			\gls{cs}_{94.7} &= \qty{4015.5}{\joule\per\kg\kelvin}
 		\end{align*}
 		
 		Una vez obtenidos sacamos el promedio incluyendo el resto del intervalo dándonos que:
 		\begin{equation*}
-			\gls{cs}_{\text{agua}} = \qty{0.638}{\watt\per\m\kelvin}
+			\gls{cs}_{\text{agua}} = \qty{3989.5}{\joule\per\kg\kelvin}
 		\end{equation*}
+		
+		Similarmente para obtener \gls{hl} aplicamos \eqref{equ:interpolación-lineal-simple} en \cref{table:Calor-latente-vaporización} para obtener la entalpía de vaporización a los \qty{94.7}{\degreeCelsius}.
+		
+		\begin{align*}
+			\gls{hl} &= \qty{2191.3}{\kilo\joule\per\kg} + \dfrac{\qty{2166.2}{\kilo\joule\per\kg} - \qty{2191.3}{\kilo\joule\per\kg}}{\qty{100}{\degreeCelsius}-\qty{90}{\degreeCelsius}} \times (\qty{100}{\degreeCelsius} - \qty{94.7}{\degreeCelsius})\\
+			\gls{hl} &= \qty{2178.0}{\kilo\joule\per\kg}
+		\end{align*}
+		
+		Sustituyendo en \eqref{equ:potencia-necesaria-agua} obtenemos que el flujo de calor necesario por unidad de flujo másico es:
+		
+		\begin{equation}\label{equ:potencia-necesaria-sistema}
+			\dot{Q} = \dot{m}\left[\qty{3.9895}{\kilo\joule\per\kg\kelvin} \left(\qty{94.7}{\degreeCelsius}-\qty{13}{\degreeCelsius}\right) + \qty{2178.0}{\kilo\joule\per\kg}\right] = \dot{m} \times \qty{2503.94}{\kilo\joule\per\kg}
+		\end{equation}
+		
+%		
+%		Conductividad térmica
+%		
+%		Para conocer $\gls{cs}_{\text{agua}}$ de la \cref{table:Conductividad-térmica-agua-salada} se usa \eqref{equ:interpolación-lineal-simple} para obtener la conductividad estimada a los \qty{13}{\degreeCelsius} y a los \qty{94.7}{\degreeCelsius}.
+%		
+%		\begin{align*}
+%			\gls{cs}_{13} &= \qty{0.586}{\watt\per\m\kelvin} + \dfrac{\qty{0.601}{\watt\per\m\kelvin} - \qty{0.586}{\watt\per\m\kelvin}}{\qty{20}{\degreeCelsius}-\qty{10}{\degreeCelsius}} \times (\qty{20}{\degreeCelsius} - \qty{13}{\degreeCelsius})\\
+%			\gls{cs}_{13} &= \qty{0.591}{\watt\per\m\kelvin}\\
+%			\gls{cs}_{94.7} &= \qty{0.670}{\watt\per\m\kelvin} + \dfrac{\qty{0.674}{\watt\per\m\kelvin} - \qty{0.670}{\watt\per\m\kelvin}}{\qty{100}{\degreeCelsius}-\qty{90}{\degreeCelsius}} \times (\qty{100}{\degreeCelsius} - \qty{94.7}{\degreeCelsius})\\
+%			\gls{cs}_{94.7} &= \qty{0.672}{\watt\per\m\kelvin}
+%		\end{align*}
+%		
+%		Una vez obtenidos sacamos el promedio incluyendo el resto del intervalo dándonos que:
+%		\begin{equation*}
+%			\gls{cs}_{\text{agua}} = \qty{0.638}{\watt\per\m\kelvin}
+%		\end{equation*}
