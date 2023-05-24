@@ -63,7 +63,7 @@
 			UPIITA
 		};
 		
-		\node [below of = UPIITA, anchor = north, yshift=-3em] (Title) {
+		\node [below of = UPIITA, anchor = north, yshift=-10mm] (Title) {
 			\fontsize{18pt}{18pt}\selectfont
 			\Footlight
 			\parbox{0.7\linewidth} {
@@ -82,7 +82,7 @@
 			}
 		};
 		
-		\node [below of = Degree, anchor = north, yshift=-10mm] (Students) {
+		\node [below of = Degree, anchor = north, yshift=-5mm] (Students) {
 			\fontsize{16pt}{16pt}\selectfont
 			\parbox{0.7\linewidth} {
 				\bfseries
@@ -111,11 +111,10 @@
 		] {
 			\node [
 				anchor = north,
-				yshift=-6mm,
 				path picture={
 					\draw [ultra thick] (0, 0) -- ++(7cm, 0);
 				},
-				left = 2mm
+				left=2mm
 			] {
 				\fontsize{12pt}{12pt}\selectfont
 				\parbox{7cm} {
@@ -127,11 +126,10 @@
 			};
 			\node [
 				anchor = north,
-				yshift=-6mm,
 				path picture={
 					\draw [ultra thick] (0, 0) -- ++(7cm, 0);
 				},
-				right = 2mm
+				right=2mm
 			] {
 				\fontsize{12pt}{12pt}\selectfont
 				\parbox{7cm} {
@@ -143,10 +141,10 @@
 			};\\
 			\node [
 				anchor = north,
-				yshift=-6mm,
 				path picture={
 					\draw [ultra thick] (0, 0) -- ++(7cm, 0);
-				}
+				},
+				left=2mm
 			] {
 				\fontsize{12pt}{12pt}\selectfont
 				\parbox{7cm} {
@@ -155,6 +153,35 @@
 					Dr. Sergio Isai Palomino Resendiz\\
 					Director
 				}
+			};
+			\node [
+				anchor = north,
+				path picture={
+					\draw [ultra thick] (0, 0) -- ++(7cm, 0);
+				},
+				right=2mm
+			] {
+				\fontsize{12pt}{12pt}\selectfont
+				\parbox{7cm} {
+					\centering
+					\vspace*{32pt}
+					Dr. Mario Fidel García Sánchez\\
+					Presidente
+				}
+			};\\
+			\node [
+				anchor = north,
+				path picture={
+					\draw [ultra thick] (0, 0) -- ++(7cm, 0);
+				}
+			] {
+				\fontsize{12pt}{12pt}\selectfont
+				\parbox{7cm} {
+					\centering
+					\vspace*{32pt}
+					Dr. Alberto Luviano Juárez\\
+					Secretario
+				}
 			};\\
 		};
 		
@@ -162,7 +189,7 @@
 			\fontsize{14pt}{14pt}\selectfont
 			\addfontfeature{LetterSpace=25}
 			\bfseries
-			México CDMX, a Marzo 16 de 2023
+			México CDMX, a Mayo 26 de 2023
 		};
 	\end{scope}
 \end{tikzpicture}

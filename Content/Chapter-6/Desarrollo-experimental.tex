@@ -178,9 +178,9 @@
 						& \unit{\watt\per\m\tothe{2}}	
 				\end{longtblr}
 
-	\section{Selección del elemento óptico de concentración}
+	\section{Selección y caracterización del elemento óptico de concentración}
 		
-		Para este proyecto son accesibles 4 modelos de lentes de Fresnel cuyas características se ven resumidas en la~\cref{table:fresnel-lenses-models}.
+		Para este proyecto son accesibles 4 modelos de lentes de Fresnel con ranuras hacia adentro cuyas características se ven resumidas en la~\cref{table:fresnel-lenses-models}.
 		
 		% Página 36
 		\begin{longtblr}[
@@ -236,7 +236,46 @@
 				& \num{0.5}
 		\end{longtblr}
 		
-		Para lograr la selección adecuada del elemento óptico de concentración se debe buscar comparar teóricamente los impactos que tendría su implementación en el modelo.
+		Se halla en su hoja técnica que el PMMA \acrshort{pvuvc} tiene una transmitancia igual a \percent{92.65}.
+		
+		Para seleccionar la lente se tomó como criterio principal el número F (\gls{F}) dado por \eqref{equ:F-number}, ya que entre mayor sea \gls{F}, será mayor la capacidad de concentración y será mejor la capacidad de recolección de la lente.
+		
+		\begin{equation}\label{equ:F-number}
+			\gls{F} = \dfrac{\gls{f}}{2\gls{Rl}}
+		\end{equation}
+		
+		Conociendo eso, se determina que el modelo a usar es la lente de Fresnel condensadora \textbf{CP330-280} con un \gls{F} equivalente a \num{1.179}. 
+		
+		A continuación se enlistan algunas propiedades importantes del material seleccionado \cite{shannon_art_1997} citado por \cite{leutz_nonimaging_2001}.
+		
+		\begin{itemize}
+			\item Índice de refracción: $\gls{nd} = 1.4918$
+			\item Número de Abbe: $V_d = 54.7$
+			\item Coeficiente de temperatura: $\sfrac{dn}{dT} \unit{\per\kelvin} = \num{-105e-6}$
+		\end{itemize}
+		
+		Conociendo esto se calculan los ángulos $\alpha$, $\omega$ y $\beta$ necesarios para el cálculo en el trazado de rayos usando \cref{equ:rayos-alfa,equ:rayos-omega,equ:rayos-beta}. Donde $\alpha$ es la inclinación del prisma y $\beta$ es el ángulo del prisma.
+		
+		\begin{align}
+			\tan\alpha &= \dfrac{R}{\gls{nd}\sqrt{R^{2}+f^{2}} - f} \label{equ:rayos-alfa}\\
+			\tan\omega &= \dfrac{R}{f} \label{equ:rayos-omega}\\
+			\tan\beta &= \alpha + \omega \label{equ:rayos-beta}
+		\end{align}
+		
+		Lo que nos da: $\alpha= \ang{34.361}$, $\omega = \ang{22.989}$, $\beta= \ang{57.350}$
+		
+		Finalmente se describen las ecuaciones que se usan para modelar el trazado de rayos.
+		
+		\begin{align}
+			\phi_{1} &= \beta - \alpha - \theta_{\text{entrada}}\\
+			\phi_{1}\prime &= \arcsin\left(\dfrac{\sin\phi_{1}}{\gls{nd}\prime}\right)\\
+			\phi_{t} &= \beta - \alpha - \phi_{1}\prime\\
+			\phi_{2}\prime &= \phi_{t} + \alpha\\
+			\phi_{2} &= \arcsin{\sin\phi_{2}\prime\gls{nd}\prime}\\
+			\theta_{salida} &= \phi_{2} - \alpha
+		\end{align}
+		
+		
 	
 	\section{Diseño de la cámara de concentración solar}
 		
@@ -292,7 +331,15 @@
 					& Se puede manufacturar para tener buena absortividad
 			\end{longtblr}
 			
-			Con base en la comparativa anterior, se decide el uso de cobre como material para el recibidor solar. Para mejorar sus características como recibidor solar se aplicará un recubrimiento que potencie sus características usando el principio de selectividad espectral.
+			Con base en la comparativa anterior, se decide el uso de cobre como material para el recibidor solar. Para mejorar sus características como recibidor solar se aplicará un recubrimiento que potencie sus características usando el principio de selectividad espectral. 
+			
+			Se considera que el recubrimiento de óxido negro resulta ser una opción adecuada ya que de acuerdo al resultado reportado en \cite{lowery_solar_1977}, alcanza valores de absortividad para el espectro solar en el rango de 0.78 a 0.86 y de emisividad de 0.04 a 0.08.
+%			
+%			\begin{itemize}
+%				\item Se prepara una disolución de sales de ``ebolnol C'' en agua a una concentración de \qty{180}{\gram\per\litre}
+%				\item Se calienta la disolución a las instrucciones dadas por el fabricante o en su defecto a \qty{372}{\kelvin}.
+%				\item Se sumerge el área de interés sobre la 
+%			\end{itemize}
 			
 		\subsection{Almacenamiento térmico de calor}
 			
@@ -307,10 +354,28 @@
 				\item \textbf{Humedad}: Aproximadamente \percent{0.1}
 			\end{itemize}
 			
-		\subsection{Aislamiento térmico}
+%		\subsection{Aislamiento térmico}
+%			
+%			Se realizó una investigación previa sobre loa materiales candidatos como aislantes térmicos de los cuales se determinó que los siguientes materiales son potenciales candidatos: aereogel, fibra de sílice, fibra cerámica.
 			
-			Se realizó una investigación previa sobre loa materiales candidatos como aislantes térmicos de los cuales se determinó que los siguientes materiales son potenciales candidatos: aereogel, fibra de sílice, fibra cerámica.
+		\subsection{Pérdidas}
 			
-			
-			
-			
+			\subsubsection{Pérdidas por transmisión}
+				
+				Usando como referencia la~\cref{fig:Transmitancia} vemos que el elemento de concentración tiene una eficiencia de transmisión aproximada de \percent{85}. Además el cuarzo utilizado como ventana en la cámara tiene una eficiencia de transmisión de \percent{90.89}, asumiendo que el aire es un medio con $\gls{nd}_{\text{aire}} = 1$ y $\gls{tau}_{\text{aire}} = 1$, la transmisión total del sistema estaría dada por \eqref{equ:transmisión-cámara}.
+		
+				\begin{figure}[H]
+					\centering
+					\includegraphics[
+						width=\linewidth,
+						height=70mm,
+						keepaspectratio
+					]{Desarrollo-experimental/Transmitancia.png}
+					\caption{Valores de eficiencia idealizados de lentes de Fresnel calculadas en la reflexión de las superficies y otras pérdidas comunes.}
+					\floatfoot{Imagen adaptada de \cite{davis_optical_2007}}
+					\label{fig:Transmitancia}
+				\end{figure}
+				
+				\begin{equation}\label{equ:transmisión-cámara}
+					\gls{tau} = \tau_{\text{lente}}\tau_{\text{cuarzo}} = \percent{77.26}
+				\end{equation}
