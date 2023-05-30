@@ -1,0 +1,49 @@
+Anexo lista de materiales.
+
+\begin{longtblr}[
+	caption = {Materiales contemplados para el diseño del desalinizador},
+	label = {table:comparacion-material-aislante},
+]{
+	rows={
+		valign = m,
+		halign= c
+	},
+	colspec = {X[2, l] *{3}{X}},
+	hlines,
+	vlines,
+	row{odd} = {bg=tablerowblue},
+	row{1} = {
+		bg = tabletitleblue,
+		fg=white,
+		font = \bfseries,
+		halign=c
+	},
+	rowhead = 0
+}
+	\SetCell[c=4]{c}	Cuarzo &&&\\
+	Parámetro
+		& Unidad
+		& Valor
+		& Uso\\
+	Densidad
+		& \unit{\gram\per\cm\tothe{3}}
+		& 2.20 - 2.65
+		& \SetCell[r=2]{c} Ventana de la cámara del recibidor solar\\
+	Transmitancia
+		& ---
+		& \percent{99.9}
+		& ~\\
+	\SetCell[c=4]{c}	Cuarzo &&&\\
+	Parámetro
+		& Unidad
+		& Valor
+		& Uso\\
+	Densidad
+		& \unit{\gram\per\cm\tothe{3}}
+		& 2.20 - 2.65
+		& \SetCell[r=2]{c} Ventana de la cámara del recibidor solar\\
+	Transmitancia
+		& ---
+		& \percent{99.9}
+		& ~\\
+\end{longtblr}
