@@ -599,7 +599,7 @@
 			
 			\subsubsection{Radiación efectiva}
 			
-				La radiación que podría concentrar efectivamente esta lente de Fresnel sobre el recibidor solar se describe mediante~\eqref{equ:radiación-concentrada}; usando las asunciones generales propuestas se obtiene una radiación de \qty{66.02}{\watt}.
+				La radiación que podría concentrar efectivamente esta lente de Fresnel sobre el recibidor solar se describe mediante~\eqref{equ:radiación-concentrada}; usando las asunciones generales propuestas se obtiene una radiación de \qty{51.80}{\watt}.
 				
 				\begin{equation}\label{equ:radiación-concentrada}
 					\dot{Q}_{\text{absorbedor}} = \gls{intensity}_{\text{Sol}} \tau A_\text{Fresnel}
@@ -769,20 +769,98 @@
 					Temperatura de transición vítrea & \unit{\degreeCelsius} & \numrange{127}{140}\\
 					Temperatura de fusión & \unit{\degreeCelsius} & \numrange{278}{285}
 				\end{longtblr}
+			
+		\subsection{Definición de la alimentación}
 					
-		\subsection{Definición del caudal}
-		
-			Se definirá el caudal suponiendo una transmisión perfecta y directa al agua usando el valor de $\dot{Q}_{\text{absorbedor}}$ en \eqref{equ:potencia-necesaria-sistema}.
+			\subsubsection{Definición del caudal}
 			
-			\begin{align*}
-				\dot{m} &= \dfrac{\qty{66.02}{\watt}}{\qty{2493.97}{\kilo\joule\per\kg}}
-					& \dot{m} &= \qty{0.026}{\gram\per\s}
-			\end{align*}
+				Se definirá el caudal suponiendo una transmisión perfecta y directa al agua usando el valor de $\dot{Q}_{\text{absorbedor}}$ en \eqref{equ:potencia-necesaria-sistema}.
+				
+				\begin{align*}
+					\dot{m} &= \dfrac{\qty{43.51}{\watt}}{\qty{2493.97}{\kilo\joule\per\kg}}
+						& \dot{m} &= \qty{0.017}{\gram\per\s}
+				\end{align*}
+				
+				Se observa que el caudal (\qty{1.05}{\milli\litre\per\minute}) es bastante pequeño y sabiendo que la mayor parte del calor se iría en el cambio de fase, se considera que la ebullición no es el medio más adecuado para desalinizar el agua y se puede considerar que combinar los mecanismos de ebullición y evaporación tendrán un efecto sinérgico en la productividad del sistema.
+				
+				Entonces se redefine el flujo másico necesario como~\cref{equ:flujo-másico-redefinido} dando un caudal de \qty{8.26}{\milli\litre\per\minute}
+				
+				\begin{equation}\label{equ:flujo-másico-redefinido}
+					\dot{m} = \dfrac{\qty{43.51}{\watt}}{\left[\qty{3.9895}{\kilo\joule\per\kg\kelvin} \left(\qty{94.7}{\degreeCelsius}-\qty{15.5}{\degreeCelsius}\right) \right]} = \qty{0.138}{\gram\per\s}
+				\end{equation}
 			
-			Se observa que el caudal (\qty{1.04}{\milli\litre\per\minute}) es bastante pequeño y sabiendo que la mayor parte del calor se iría en el cambio de fase, se considera que la ebullición no es el medio más adecuado para desalinizar el agua y se puede considerar que combinar los mecanismos de ebullición y evaporación tendrán un efecto sinérgico en la productividad del sistema.
-			
-			Entonces se redefine el flujo másico necesario como~\cref{equ:flujo-másico-redefinido} dando un caudal de \qty{12.54}{\milli\litre\per\minute}
-			
-			\begin{equation}\label{equ:flujo-másico-redefinido}
-				\dot{m} = \dfrac{\dot{\qty{43.28}{\watt}}}{\left[\qty{3.9895}{\kilo\joule\per\kg\kelvin} \left(\qty{94.7}{\degreeCelsius}-\qty{15.5}{\degreeCelsius}\right) \right]} = \qty{0.21}{\gram\per\s}
-			\end{equation}
+			\subsubsection{Materiales}
+				
+				Se considera que de acuerdo al caudal, una bomba peristáltica sería la opción adecuada ya que permiten trabajar con fluidos altamente agresivos. En la~\cref{table:propiedades-bomba} se describen algunos modelos encontrados.
+				
+				\begin{longtblr}[
+					caption = {Propiedades de modelos de bombas peristálticas},
+					label = {table:propiedades-bomba},
+				]{
+					colspec = {X[l] *{2}{X[c]}},
+					hlines,
+					vlines,
+					row{odd} = {bg=tablerowblue},
+%					row{1} = {
+%						bg = tabletitleblue,
+%						fg=white,
+%						font = \bfseries,
+%						halign=c
+%					},
+					rowhead = 0,
+					rows={
+						valign = m
+					},
+					note{*} = {De acuerdo al diámetro de tubo seleccionado}
+				}
+					\SetCell[c=3]{bg = tabletitleblue, c}XFGWFCQM7B &&\\
+					Parámetro & Unidad & Valor\\
+					Alimentación & \unit{\volt} & 12\\
+					Caudal mínimo & \unit{\milli\litre\per\minute} & \numrange{11}{80}\TblrNote{*}\\
+					Masa & \unit{\gram} & 82\\
+					Tamaño & \unit{\mm} & 70 x 60 x 45\\
+					Precio aproximado & MXN & 180\\
+					\SetCell[c=3]{bg = tabletitleblue, c}l DYNWAVEMX &&\\
+					Parámetro & Unidad & Valor\\
+					Alimentación & \unit{\volt} & 12\\
+					Caudal mínimo & \unit{\milli\litre\per\minute} & \numrange{2}{19}\TblrNote{*}\\
+					Caudal máximo & \unit{\milli\litre\per\minute} & \numrange{17}{100}\TblrNote{*}\\
+					Masa & \unit{\gram} & No hay detalles\\
+					Tamaño & \unit{\mm} & 30 x 60\\
+					Precio aproximado & MXN & 211\\
+				\end{longtblr}
+				
+				Para las tuberías se considera que el uso de mangueras de plástico de diámetro exterior de \qty{4}{\mm} o de 3/16 in es suficiente para las partes ajenas a la cámara de concentración solar. Para el tramo que toca directamente al recibidor solar se plantea el uso de tubo flexible de cobre. El uso de este material se justifica únicamente durante la caracterización del sistema, ya que la disponibilidad en diámetros es mayor que en el caso de tubos flexibles de acero galvanizado e inoxidable.
+				
+				Para la extracción de vapor se considera adecuado el uso de mini ventiladores con protección IP. Los detalles del modelo propuesto se encuentran en la tabla~\cref{table:propiedades-extractor}.
+				
+				\begin{longtblr}[
+					caption = {Propiedades de modelos de extractores},
+					label = {table:propiedades-extractor},
+				]{
+					colspec = {X[l] *{2}{X[c]}},
+					hlines,
+					vlines,
+					row{odd} = {bg=tablerowblue},
+%					row{1} = {
+%						bg = tabletitleblue,
+%						fg=white,
+%						font = \bfseries,
+%						halign=c
+%					},
+					rowhead = 0,
+					rows={
+						valign = m
+					}
+				}
+					\SetCell[c=3]{bg = tabletitleblue, c}UF3A3-700B &&\\
+					Parámetro & Unidad & Valor\\
+					Alimentación & \unit{\volt} & 3\\
+					Potencia & \unit{\watt} & 0.29\\
+					Caudal & \unit{\milli\litre\per\minute} & \num{3000}\\
+					RPM & rpm & 17000\\
+					Tamaño & \unit{\mm} & 10 x 10 x 3\\
+					Masa & \unit{\gram} & 0.91\\
+					Protección IP & --- & IP58 \\
+					Precio aproximado & MXN & 13.50
+				\end{longtblr}
