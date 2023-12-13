@@ -135,7 +135,7 @@
 				\begin{longtblr}[
 					caption = {Variables climáticas consideradas importantes para la investigación},
 					label = {table:variables-climaticas},
-					note{?} = {Se decidió incluir en el estudio a esta variable dado a que no se sabe con certeza si será necesaria para el futuro desarrollo.}
+					note{?} = {Estas variables fueron estudiadas para saber si se debían considerar en los modelos a desarrollar, sin embargo, tras un segundo análisis después del estudio se decició excluirlas del modelo }
 				]{
 					colspec = {X[c] X[3, l] c},
 					hlines,
@@ -180,7 +180,7 @@
 
 	\section{Descripción de los problemas asociados a la destilación solar}
 		
-		Gracias a una entrevista informal con el Dr. Palomino acerca del modelo propuesto en \cite{palomino-resendiz_design_2018}, se identificó que la humedad suele condensarse sobre el vidrio o cristal afectando así la transmisividad y por ende el calor efectivo que llega al agua. Además, debido a la naturaleza intermitente de la energía solar, el proceso de desalinización suele presentar caídas grandes de producción en presencia de una nube.
+		Gracias a una entrevista informal con el Dr. Sergio Isai Palomino Resendiz acerca del modelo propuesto en \cite{palomino-resendiz_design_2018}, se identificó que la humedad suele condensarse sobre el vidrio o cristal afectando así la transmisividad y por ende el calor efectivo que llega al agua. Además, debido a la naturaleza intermitente de la energía solar, el proceso de desalinización suele presentar caídas grandes de producción en presencia de una nube.
 		
 		Por ello, este diseño se encaminó a mitigar en lo posible los problemas identificados proponiendo un método de almacenamiento de energía térmica y transferencia indirecta de calor.
 		
@@ -194,7 +194,7 @@
 			
 			En la~\cref{fig:SFC_SW_DWN} observamos que de marzo a septiembre tenemos los niveles más altos de \acrlong{roc} y esta radiación se encuentra dentro de un rango de \qtyrange{5}{8}{\kWh\per\m\tothe{2}\day}.
 			
-			De la~\cref{fig:ALLSKY_SFC_SW_DWN_surface_2020_3d} se observa que la irradiancia se de \acrshort{roc} de interés varía entre los \qtyrange{500}{900}{\watt\per\m\tothe{2}} y se aprecia que en mayor proporción se encuentra entre \qtyrange{600}{700}{\watt\per\m\tothe{2}} por lo que para los cálculos de operación se decide usar \qty{650}{\watt\per\m\tothe{2}} como valor de irradiancia.
+			De las~\cref{fig:ALLSKY_SFC_SW_DWN_3d_mean_2020,ALLSKY_SFC_SW_DWN_3d_mean_2021} se observa que la irradiancia se de \acrshort{roc} de interés varía entre los \qtyrange{500}{900}{\watt\per\m\tothe{2}} y se aprecia que en mayor proporción se encuentra entre \qtyrange{600}{700}{\watt\per\m\tothe{2}} por lo que para los cálculos de operación se decide usar \qty{650}{\watt\per\m\tothe{2}} como valor de irradiancia.
 	
 			\begin{figure}[H]
 				\centering
@@ -661,11 +661,12 @@
 						& Se puede manufacturar para tener buena absortividad
 				\end{longtblr}
 				
-				A pesar de que el cobre tiene una alta reflectividad en el espectro de interés, se decide el uso de este material debido a sus ventajas de accesibilidad. Para solventar el inconveniente descrito, se aplicará un recubrimiento que potencie sus características como recibidor solar usando el principio de selectividad espectral.
+				A pesar de que el cobre tiene una alta reflectividad en el espectro de interés, se decide el uso de este material debido a sus ventajas de accesibilidad y costos. Para solventar el inconveniente descrito, se aplicó un recubrimiento que potencia sus características como recibidor solar usando el principio de selectividad espectral.
 				
-				Se considera que el recubrimiento de óxido negro resulta ser una opción adecuada ya que de acuerdo al resultado reportado en \cite{lowery_solar_1977}, alcanza valores de absortividad para el espectro solar en el rango de 0.78 a 0.86 y de emisividad de 0.04 a 0.08 convirtiéndose así en un candidato idóneo. 
+				Al inicio se consideró que el recubrimiento de óxido negro sería una opción adecuada ya que de acuerdo al resultado reportado en \cite{lowery_solar_1977}, alcanza valores de absortividad para el espectro solar en el rango de 0.78 a 0.86 y de emisividad de 0.04 a 0.08 convirtiéndose así en un candidato fuerte. 
 				
-				Este recubrimiento resulta favorable en términos de rendimiento, duración y preservación de propiedades del cobre; a pesar de ello, si no se puede acceder a este recubrimiento, las pinturas negras de uso industrial pueden ser una opción viable.
+				Este recubrimiento resulta favorable en términos de rendimiento, duración y preservación de propiedades del cobre; a pesar de ello, se decidió usar pintura de alta temperatura negra de uso industrial debido a varias ventajas halladas, entre ellas, la accesibilidad, costo y facilidad de uso sin mencionar que de acuerdo a \cite{mosquera_rivera_estudio_2020} donde se comparan diferentes pinturas para su aplicación en colectores solares, la  absortividad aplicada sobre cobre resulta de un \percent{95} sobre cobre superando al óxido negro.
+								
 				
 				Se define entonces la temperatura máxima de forma ideal que podría alcanzar el concentrador solar considerando en función \cref{equ:areas-concentracion}.
 				
@@ -777,24 +778,25 @@
 				Se definirá el caudal suponiendo una transmisión perfecta y directa al agua usando el valor de $\dot{Q}_{\text{absorbedor}}$ en \eqref{equ:potencia-necesaria-sistema}.
 				
 				\begin{align*}
-					\dot{m} &= \dfrac{\qty{43.51}{\watt}}{\qty{2493.97}{\kilo\joule\per\kg}}
-						& \dot{m} &= \qty{0.017}{\gram\per\s}
+				\dot{m} &= \dfrac{\qty{51.80\times\alpha_{\text{recibidor}}}{\watt}}{\qty{2493.97}{\kilo\joule\per\kg}}
+						& \dot{m} &= \dfrac{\qty{49.21}{\watt}}{\qty{2493.97}{\kilo\joule\per\kg}}
+						& \dot{m} &= \qty{0.0197}{\gram\per\s}
 				\end{align*}
 				
-				Se observa que el caudal (\qty{1.05}{\milli\litre\per\minute}) es bastante pequeño y sabiendo que la mayor parte del calor se iría en el cambio de fase, se considera que la ebullición no es el medio más adecuado para desalinizar el agua y se puede considerar que combinar los mecanismos de ebullición y evaporación tendrán un efecto sinérgico en la productividad del sistema.
+				Se observa que el caudal (\qty{1.18}{\milli\litre\per\minute}) es bastante pequeño y sabiendo que la mayor parte del calor se iría en el cambio de fase, se considera que la ebullición no es el medio más adecuado para desalinizar el agua y se puede considerar que combinar los mecanismos de ebullición y evaporación tendrán un efecto sinérgico en la productividad del sistema.
 				
-				Entonces se redefine el flujo másico necesario como~\cref{equ:flujo-másico-redefinido} dando un caudal de \qty{8.26}{\milli\litre\per\minute}
+				Entonces se redefine el flujo másico necesario como~\cref{equ:flujo-másico-redefinido} dando un caudal de \qty{9.34}{\milli\litre\per\minute}
 				
 				\begin{equation}\label{equ:flujo-másico-redefinido}
-					\dot{m} = \dfrac{\qty{43.51}{\watt}}{\left[\qty{3.9895}{\kilo\joule\per\kg\kelvin} \left(\qty{94.7}{\degreeCelsius}-\qty{15.5}{\degreeCelsius}\right) \right]} = \qty{0.138}{\gram\per\s}
+					\dot{m} = \dfrac{\qty{49.21}{\watt}}{\left[\qty{3.9895}{\kilo\joule\per\kg\kelvin} \left(\qty{94.7}{\degreeCelsius}-\qty{15.5}{\degreeCelsius}\right) \right]} = \qty{0.156}{\gram\per\s}
 				\end{equation}
 			
 			\subsubsection{Materiales}
 				
-				Se considera que de acuerdo al caudal, una bomba peristáltica sería la opción adecuada ya que permiten trabajar con fluidos altamente agresivos. En la~\cref{table:propiedades-bomba} se describen algunos modelos encontrados.
+				Se consideró de acuerdo al caudal que el uso de una bomba peristáltica sería la opción adecuada ya que permiten trabajar con fluidos altamente agresivos al no tener contacto directo con el fluido además de proporcionar caudales generalmente bajos. En la~\cref{table:propiedades-bomba} se describe el modelo seleccionado tras una ecahustiva revisión de los modelos disponibles.
 				
 				\begin{longtblr}[
-					caption = {Propiedades de modelos de bombas peristálticas},
+					caption = {Propiedades de la bomba peristáltica EZO-PMP},
 					label = {table:propiedades-bomba},
 				]{
 					colspec = {X[l] *{2}{X[c]}},
@@ -811,27 +813,21 @@
 					rows={
 						valign = m
 					},
-					note{*} = {De acuerdo al diámetro de tubo seleccionado}
+					note{*} = {Después de la calibración (específicamente para la bomba adquirida)}
 				}
 					\SetCell[c=3]{bg = tabletitleblue, c}XFGWFCQM7B &&\\
 					Parámetro & Unidad & Valor\\
-					Alimentación & \unit{\volt} & 12\\
-					Caudal mínimo & \unit{\milli\litre\per\minute} & \numrange{11}{80}\TblrNote{*}\\
-					Masa & \unit{\gram} & 82\\
-					Tamaño & \unit{\mm} & 70 x 60 x 45\\
-					Precio aproximado & MXN & 180\\
-					\SetCell[c=3]{bg = tabletitleblue, c}l DYNWAVEMX &&\\
-					Parámetro & Unidad & Valor\\
-					Alimentación & \unit{\volt} & 12\\
-					Caudal mínimo & \unit{\milli\litre\per\minute} & \numrange{2}{19}\TblrNote{*}\\
-					Caudal máximo & \unit{\milli\litre\per\minute} & \numrange{17}{100}\TblrNote{*}\\
-					Masa & \unit{\gram} & No hay detalles\\
-					Tamaño & \unit{\mm} & 30 x 60\\
-					Precio aproximado & MXN & 211\\
+					Alimentación motor & \unit{\volt} & \numrange{12}{24}\\
+					Alimentación controlador & \unit{\volt} & \numrange{3.3}{5}\\
+					Caudal mínimo & \unit{\milli\litre\per\minute} & 0.5\\
+					Caudal máximo & \unit{\milli\litre\per\minute} & 54\TblrNote{*}\\
+					Precisión de flujo & \unit{\percent} & $\pm$ 1\\
+					Altura de bombeo & \unit{\m} & 8.1\\
+					Tamaño & \unit{\mm} & 37.5 x 48 x 112\\
+					Precio aproximado & USD & 84.99\\
+					Grado alimenticio & & Sí
 				\end{longtblr}
-				
-				Para las tuberías se considera que el uso de mangueras de plástico de diámetro exterior de \qty{4}{\mm} o de 3/16 in es suficiente para las partes ajenas a la cámara de concentración solar. Para el tramo que toca directamente al recibidor solar se plantea el uso de tubo flexible de cobre. El uso de este material se justifica únicamente durante la caracterización del sistema, ya que la disponibilidad en diámetros es mayor que en el caso de tubos flexibles de acero galvanizado e inoxidable.
-				
+								
 				Para la extracción de vapor se considera adecuado el uso de mini ventiladores con protección IP. Los detalles del modelo propuesto se encuentran en la tabla~\cref{table:propiedades-extractor}.
 				
 				\begin{longtblr}[
@@ -853,14 +849,17 @@
 						valign = m
 					}
 				}
-					\SetCell[c=3]{bg = tabletitleblue, c}UF3A3-700B &&\\
+					\SetCell[c=3]{bg = tabletitleblue, c}UF3H3-500B &&\\
 					Parámetro & Unidad & Valor\\
-					Alimentación & \unit{\volt} & 3\\
+					Alimentación & \unit{\volt} & \numrange{2}{3.5}\\
 					Potencia & \unit{\watt} & 0.29\\
-					Caudal & \unit{\milli\litre\per\minute} & \num{3000}\\
+					Temperatura de operación & \unit{\degreeCelsius} & \numrange{-10}{70}\\
+					Caudal & \unit{\milli\litre\per\minute} & \num{16000}\\
 					RPM & rpm & 17000\\
-					Tamaño & \unit{\mm} & 10 x 10 x 3\\
-					Masa & \unit{\gram} & 0.91\\
+					Tamaño & \unit{\mm} & 17 x 17 x 3\\
+					Masa & \unit{\gram} & 1.36\\
 					Protección IP & --- & IP58 \\
-					Precio aproximado & MXN & 13.50
+					Precio aproximado & USD & 24.21
 				\end{longtblr}
+				
+				Para la conexión entre las diferentes partes, se encontró que las magueras de polietileno son la opción más adecuada debido a sus propiedades de flexibilidad, rigidez, temperatura de funcionamiento y costo.
