@@ -39,7 +39,7 @@
 			\begin{enumerate}
 				\item Contenedor de agua de mar
 				\item Contenedor de agua destilada
-				\item Receptor para vaporización
+				\item Cámara de evaporación
 				\item Tapa
 			\end{enumerate}
 			
@@ -79,7 +79,7 @@
 					En este módulo se monitorea la temperatura y el nivel del agua.
 				\end{center}			
 			
-			\subsection{Contenedor de agua destilada}
+			\subsubsection{Contenedor de agua destilada}
 				
 				Su función básica es promover la condensación del vapor y favorecer el aumento de la temperatura del agua de entrada usando un intercambiador de calor entre la misma cámara y el contenedor de agua de mar.
 				
@@ -95,7 +95,7 @@
 					En este módulo se monitorea el nivel del agua.
 				\end{center}
 							
-			\subsection{Receptor para vaporización}
+			\subsubsection{Cámara de evaporación}
 				
 				Su función básica es favorecer el proceso de evaporación aumentando el área superficial por unidad de volumen. Para incrementar la evaporación efectiva se acopló un ventilador que permite desalojar el aire saturado además de promover el flujo del aire.
 				
@@ -142,4 +142,28 @@
 				\begin{center}
 					En este módulo se monitorea la temperatura del recibidor solar.
 				\end{center}
-				
+		
+		\subsection{Simulaciones}
+			
+			Se realizaron varias simulaciones de transferencia de calor con el fin de validar los diseños propuestos, los materiales seleccionados y el caudal propuesto durante el desarrollo experimental. A su vez, se realizaron simulaciones del flujo de aire en la cámara de evaporación con el fin de validar el diseño visto en la~\cref{fig:EvaporationSurface}.
+	
+	\section{Control del sistema}
+	
+		Tras el estudio y comparación de las ventajas y desventajas de diferentes métodos de control numérico se concluyó que el método de control difuso se acoplaba mejor a las necesidades del sistema ya que:
+		
+		\begin{itemize}
+			\item El modelo de contro difuso permite hacer razonamientos para evaluar el grado de certidumbre de una afirmación en vez de limitarse a una lógica binaria donde se producen saltos de una afirmación a otra.
+			\item Permite crear un modelo de control basado en reglas fácilmente interpretables
+			\item No requiere un modelo matemático u aproximación numérica del proceso, sino, en conocimiento empírico, lo cual es muy beneficioso, ya que tanto el proceso de evaporación como el de ebullición es un fenómeno muy complejo y difícilmente modelable.
+			\item Permite tomar decisiones de conocimientos y datos inexactos de forma similar al razonamiento humano
+		\end{itemize}
+		
+		\subsection{Sensores y componentes, calibración y caracterización}\label{subsec:calibración}
+		
+			En esta sección se detalla el proceso de ajuste y caracterización de los sensores y la bomba que regula el flujo de agua, estas calibraciones resultan indispensables para el correcto funcionamiento del método de control.
+			
+			\textbf{Termistores}
+			
+		
+			
+			
