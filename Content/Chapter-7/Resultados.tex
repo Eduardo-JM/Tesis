@@ -1,59 +1,29 @@
 \chapter{Resultados}
+
+	El presente capítulo expone los resultados obtenidos tras el desarrollo del sistema de desalinización propuesto. Los resultados se organizan para proporcionar una visión integral del diseño y funcionamiento del sistema. Para lograr este cometido, se presenta de manera coherente de acuerdo al proceso seguido para obtener estos resultados.
 	
-	\section{Diseño del sistema desalinizador}
-		
-		Tras varias propuestas se llegó a un diseño modular vertical. En la~\cref{fig:WaterModule} se puede observar el primer módulo llamado ``Módulo de reaprovechamiento térmico y bombeo'' el cual se diseñó para aprovechar el calor del vapor generado tras pasar por el ``Módulo de concentración solar'' el cual se integra a un seguidor solar para calentar el agua indirectamente por medio de la lente de Fresnel.
-		
-		
-		\begin{figure}[H]
+	En primer lugar, se muestra la vista general del funcionamiento del sistema para comprender la interacción entre los componentes del desalinizador. A continuación, se entra en detalle con el diseño propuesto y se validan los componentes a través de simulaciones de transferencia de calor que sustentarán al modelo de control difuso que regula la alimentación del sistema.
+
+	
+	\section{Comportamiento e interacciones del desalinizador propuesto}
+	
+		Como se ha mencionado anteriormente, esta propuesta está encaminada a sortear los problemas identificados en la destilación solar. Para ello, se separa la evaporación del agua del calentamiento. En la~\cref{fig:VistaGeneral} se observa que la interacción entre el recibidor solar y el mecanismos de evaporación es independiente.
+	
+		\begin{figure}
 			\centering
-			\includegraphics[
-				width=\linewidth,
-				height=70mm,
-				keepaspectratio
-			]{Resultados/Sistema/WaterModule.png}
-			\caption{Propuesta del sistema desalinizador. Módulo de reaprovechamiento térmico y bombeo.}
-			\label{fig:WaterModule}
+			\includegraphics[width=\linewidth, height=12cm, keepaspectratio]{Resultados/Sistema/VistaGeneral.png}
+			\caption{Vista general del proceso de desalinización}
+			\label{fig:VistaGeneral}
 		\end{figure}
 		
-		\begin{enumerate}
-			\item Contenedor de agua de mar
-			\item Contenedor de agua destilada
-			\item Receptor para vaporización
-			\item Tapa
-		\end{enumerate}
-		
-		En las siguientes secciones se detallarán los elementos que componen a este sistema y las funciones que desempeñan.
+		Gracias a este esquema se logra evitar la interferencia del vapor de agua a la superficie de calentamiento. Para validar este modelo, se usó Autodesk Inventor para la parte del diseño mecánico del sistema y Autodesk CFD para el modelado de la transferencia de calor y el flujo de aire.
 	
-		\subsection{Contenedor de agua de mar}
-			
-			Su función básica es contener el agua a desalinizar y servir al mismo tiempo como fuente de frío para la condensación del vapor.
-			
-			El contenedor de agua de mar consta de 2 entradas y 1 salida.
-			\begin{itemize}[columns=2]
-				\item Entrada de agua de mar
-				\item Entrada del excedente de agua caliente a evaporar
-				\item Salida hacia el Módulo de concentración solar
-			\end{itemize}
-			
-			En este módulo se monitorea la temperatura y nivel del agua.
 		
-		\subsection{Contenedor de agua destilada}
+	
+		\subsection{Componentes y módulos del desalinizador}
 			
-			Su función básica es promover la condensación del vapor y favorecer el aumento de la temperatura del agua de entrada usando un intercambiador de calor entre la misma cámara y el contenedor de agua de mar.
-			
-			Este submódulo consta de 1 entrada y 2 salidas.
-			
-			\begin{itemize}[columns=2]
-				\item Entrada de vapor caliente \columnbreak
-				\item Salida para regular la presión entre cámaras
-				\item Salida de agua destilada
-			\end{itemize}
+			Tras varias propuestas se llegó a un diseño modular vertical. En la~\cref{fig:WaterModule} se puede observar el primer módulo llamado ``Módulo de reaprovechamiento térmico y bombeo'' el cual se diseñó para aprovechar el calor del vapor generado tras pasar por el ``Módulo de concentración solar'' (\cref{fig:SolarModule}) el cual se integra a un seguidor solar para calentar el agua indirectamente por medio de la lente de Fresnel.
 		
-						
-		\subsection{Cámara de evaporación}
-			
-			Su función básica es favorecer el proceso de evaporación aumentando el área superficial por unidad de volumen del agua de mar a su vez de mantener retroalimentación por gravedad hacia la cámara de agua de mar. Los elementos principales etiquetados en las \cref{fig:camara-evaporación-corte-1,fig:camara-evaporación-corte-2} se detallan a continuación: 1) Salida de agua altamente salina 2) Continuación del canal de alimentación hacia la cámara de concentración. 3) Salida de vapor hacia la cámara de condensado. D) Canales de desagüe para evitar la acumulación de agua salina.
 		
 			\begin{figure}[H]
 				\centering
@@ -61,10 +31,17 @@
 					width=\linewidth,
 					height=70mm,
 					keepaspectratio
-				]{Resultados/Cortes/camara-evaporación-corte-1.png}
-				\caption{Cámara de evaporación. Corte 1}
-				\label{fig:camara-evaporación-corte-1}
+				]{Resultados/Sistema/WaterModule.png}
+				\caption{Propuesta del sistema desalinizador. Módulo de reaprovechamiento térmico y bombeo.}
+				\label{fig:WaterModule}
 			\end{figure}
+			
+			\begin{enumerate}
+				\item Contenedor de agua de mar
+				\item Contenedor de agua destilada
+				\item Receptor para vaporización
+				\item Tapa
+			\end{enumerate}
 			
 			\begin{figure}[H]
 				\centering
@@ -72,64 +49,97 @@
 					width=\linewidth,
 					height=70mm,
 					keepaspectratio
-				]{Resultados/Cortes/camara-evaporación-corte-2.png}
-				\caption{Cámara de evaporación. Corte 2}
-				\label{fig:camara-evaporación-corte-2}
+				]{Resultados/Sistema/SolarModule.png}
+				\caption{Propuesta del sistema desalinizador. Módulo de concentración solar.}
+				\label{fig:SolarModule}
 			\end{figure}
 			
-		\subsection{Cámara de concentración}
+			\begin{enumerate}
+				\item Cámara de transferencia de calor
+				\item Soporte de lente
+				\item Tapa
+				\item Recibidor solar
+				\item Cristal de borosilicato
+			\end{enumerate}
 			
-			\subsubsection{Parte inferior}
+			En los siguientes apartados se detallan los elementos que componen a este sistema y las funciones que desempeñan.
+	
+			\subsubsection{Contenedor de agua de mar}
 				
-				Su función básica es favorecer el proceso de evaporación aumentando el área superficial por unidad de volumen del agua de mar a su vez de mantener retroalimentación por gravedad hacia la cámara de agua de mar. Los elementos principales etiquetados en las \cref{fig:Arena-concentrador-corte-1,fig:Arena-concentrador-corte-2} se detallan a continuación: 1) Entrada del agua de mar. 2) Salida del agua de mar.
+				Su función básica es contener el agua a desalinizar y servir al mismo tiempo como fuente de frío para la condensación del vapor.
+				
+				El contenedor de agua de mar consta de 2 entradas y 1 salida.
+				\begin{itemize}[columns=2]
+					\item Entrada de agua de mar
+					\item Entrada del excedente de agua caliente a evaporar
+					\item Salida hacia el Módulo de concentración solar
+				\end{itemize}
+				
+				\begin{center}
+					En este módulo se monitorea la temperatura y el nivel del agua.
+				\end{center}			
 			
+			\subsection{Contenedor de agua destilada}
+				
+				Su función básica es promover la condensación del vapor y favorecer el aumento de la temperatura del agua de entrada usando un intercambiador de calor entre la misma cámara y el contenedor de agua de mar.
+				
+				Este submódulo consta de 1 entrada y 2 salidas.
+				
+				\begin{itemize}[columns=2]
+					\item Entrada de vapor caliente \columnbreak
+					\item Salida para regular la presión entre cámaras
+					\item Salida de agua destilada
+				\end{itemize}
+				
+				\begin{center}
+					En este módulo se monitorea el nivel del agua.
+				\end{center}
+							
+			\subsection{Receptor para vaporización}
+				
+				Su función básica es favorecer el proceso de evaporación aumentando el área superficial por unidad de volumen. Para incrementar la evaporación efectiva se acopló un ventilador que permite desalojar el aire saturado además de promover el flujo del aire.
+				
+				En una segunda revisión se formuló la posibilidad de agregar elementos que permitieran aumentar el área de contacto del agua con el aire debido a que en realidad se trata de un espacio reducido, por lo que se propone el diseño visto en la~\cref{fig:EvaporationSurface}
+				
 				\begin{figure}[H]
 					\centering
 					\includegraphics[
 						width=\linewidth,
 						height=70mm,
 						keepaspectratio
-					]{Resultados/Cortes/Arena-concentrador-corte-1.png}
-					\caption{Cámara de concentración; parte inferior. Corte 1}
-					\label{fig:Arena-concentrador-corte-1}
+					]{Resultados/Sistema/EvaporationSurface.png}
+					\caption{Diseño sugerido para aumentar el área de evaporación dentro de la cámara}
+					\label{fig:EvaporationSurface}
 				\end{figure}
 				
-				\begin{figure}[H]
-					\centering
-					\includegraphics[
-						width=\linewidth,
-						height=70mm,
-						keepaspectratio
-					]{Resultados/Cortes/Arena-concentrador-corte-2.png}
-					\caption{Cámara de concentración; parte inferior. Corte 2}
-					\label{fig:Arena-concentrador-corte-2}
-				\end{figure}
-			
-			\subsubsection{Parte superior}
+				Este submódulo consta de 2 entradas y 2 salidas.
 				
-				La parte superior de la cámara de concentración consta de la tapa que ayuda a la de sujeción del cristal de cuarzo y el recibidor solar. Estos se unen a la cámara inferior
+				\begin{itemize}[columns=2]
+					\item Entrada de agua caliente
+					\item Entrada de aire de recirculación
+					\item Salida de vapor caliente
+					\item Salida de salmuera
+				\end{itemize}
+				
+				\begin{center}
+					En este módulo se monitorea la temperatura del agua.
+				\end{center}
 			
-			
-%			\begin{figure}
-%				\centering
-%				\includegraphics[
-%					width=\linewidth,
-%					keepaspectratio
-%				]{dsf}
-%			\end{figure}
-%		
-%		Conductividad térmica
-%		
-%		Para conocer $\gls{cs}_{\text{agua}}$ de la \cref{table:Conductividad-térmica-agua-salada} se usa \eqref{equ:interpolación-lineal-simple} para obtener la conductividad estimada a los \qty{13}{\degreeCelsius} y a los \qty{94.7}{\degreeCelsius}.
-%		
-%		\begin{align*}
-%			\gls{cs}_{13} &= \qty{0.586}{\watt\per\m\kelvin} + \dfrac{\qty{0.601}{\watt\per\m\kelvin} - \qty{0.586}{\watt\per\m\kelvin}}{\qty{20}{\degreeCelsius}-\qty{10}{\degreeCelsius}} \times (\qty{20}{\degreeCelsius} - \qty{13}{\degreeCelsius})\\
-%			\gls{cs}_{13} &= \qty{0.591}{\watt\per\m\kelvin}\\
-%			\gls{cs}_{94.7} &= \qty{0.670}{\watt\per\m\kelvin} + \dfrac{\qty{0.674}{\watt\per\m\kelvin} - \qty{0.670}{\watt\per\m\kelvin}}{\qty{100}{\degreeCelsius}-\qty{90}{\degreeCelsius}} \times (\qty{100}{\degreeCelsius} - \qty{94.7}{\degreeCelsius})\\
-%			\gls{cs}_{94.7} &= \qty{0.672}{\watt\per\m\kelvin}
-%		\end{align*}
-%		
-%		Una vez obtenidos sacamos el promedio incluyendo el resto del intervalo dándonos que:
-%		\begin{equation*}
-%			\gls{cs}_{\text{agua}} = \qty{0.638}{\watt\per\m\kelvin}
-%		\end{equation*}
+			\subsubsection{Módulo de concentración solar}
+				
+				Este módulo se divide en dos partes por cuestiones de ensamble y manufactura. La parte superior se encarga de soportar un cristal de borosilicato por el cual atraviesan los rayos solares. Este cristal nos permite mantener un mejor aislamiento térmico del recibidor solar así como evitar la exposición directa al ambiente.
+				
+				Por otra parte, en el submódulo inferior ocurre el intercambio de calor entre el recibidor solar y el agua. Esto se logra por medio de la conducción de calor entre el recibidor y una tubería de cobre. La elección de la tubería de cobre se dió debido a su alta conductividad térmica, flexiblidad, disponibilidad y costos, ya que en un inicio se planteó el uso de acero galvanizado y de acero inoxidable 316, sin embargo, como se mostrará en las simulaciones siguientes no resultaba buen conductor térmico además de ser difícilmente manufacturable; también se descartó el uso de tuberías de aluminio 5052 debido a su escaza disponibilidad.
+				
+				
+				Este submódulo consta de 1 entrada y 1 salida.
+				
+				\begin{itemize}[columns=2]
+					\item Entrada de agua fría
+					\item Salida de agua caliente
+				\end{itemize}
+				
+				\begin{center}
+					En este módulo se monitorea la temperatura del recibidor solar.
+				\end{center}
+				
