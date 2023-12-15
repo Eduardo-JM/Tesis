@@ -129,8 +129,7 @@
 				
 				Este módulo se divide en dos partes por cuestiones de ensamble y manufactura. La parte superior se encarga de soportar un cristal de borosilicato por el cual atraviesan los rayos solares. Este cristal nos permite mantener un mejor aislamiento térmico del recibidor solar así como evitar la exposición directa al ambiente.
 				
-				Por otra parte, en el submódulo inferior ocurre el intercambio de calor entre el recibidor solar y el agua. Esto se logra por medio de la conducción de calor entre el recibidor y una tubería de cobre. La elección de la tubería de cobre se dió debido a su alta conductividad térmica, flexiblidad, disponibilidad y costos, ya que en un inicio se planteó el uso de acero galvanizado y de acero inoxidable 316, sin embargo, como se mostrará en las simulaciones siguientes no resultaba buen conductor térmico además de ser difícilmente manufacturable; también se descartó el uso de tuberías de aluminio 5052 debido a su escaza disponibilidad.
-				
+				Por otra parte, en el submódulo inferior ocurre el intercambio de calor entre el recibidor solar y el agua. Esto se logra por medio de la conducción de calor entre el recibidor y una tubería de cobre. La elección de la tubería de cobre se dio debido a su alta conductividad térmica, flexibilidad, disponibilidad y costos, ya que en un inicio se planteó el uso de acero galvanizado y de acero inoxidable 316, sin embargo, como se mostrará en las simulaciones siguientes no resultaba buen conductor térmico además de ser difícilmente manufacturable; también se descartó el uso de tuberías de aluminio 5052 debido a su escaza disponibilidad.
 				
 				Este submódulo consta de 1 entrada y 1 salida.
 				
@@ -157,6 +156,8 @@
 			\item No requiere un modelo matemático u aproximación numérica del proceso, sino, en conocimiento empírico, lo cual es muy beneficioso, ya que tanto el proceso de evaporación como el de ebullición es un fenómeno muy complejo y difícilmente modelable.
 			\item Permite tomar decisiones de conocimientos y datos inexactos de forma similar al razonamiento humano
 		\end{itemize}
+		
+		El control difuso se centró en la regulación del flujo de agua de mar debido a la naturaleza variable e intermitente de la fuente de energía. En consecuencia, resultó fundamental supervisar la energía recibida y ajustar el caudal en función de esta variabilidad. Además, se implementó un segundo sistema de control independiente que controla los niveles de agua en el módulo de reaprovechamiento térmico y bombeo.
 		
 		\subsection{Sensores y componentes, calibración y caracterización}\label{subsec:calibración}
 		
@@ -190,5 +191,55 @@
 				\floatfoot{Imagen adaptada de \cite{atlas_scientific_llc_ezo-pmp_2020}}
 				\label{fig:Calibración-bomba}
 			\end{figure}
+		
+		\subsection{Modelo y reglas del control difuso}
+			
+			Debido a que un gran número de variables pueden complicar exponencialmente la complejidad del algoritmo y las reglas, se decidió acotar las variables de este modelo exclusivamente a la temperatura del agua de entrada, del agua por evaporar y del recibidor solar.
+			
+			
+			De estas se definieron 5 categorías y sus respectivas membresías visibles en la~\cref{fig:var-membership-functions}.
+			
+			\begin{figure}[H]
+				\centering
+				\begin{subfigure}[t]{0.45\linewidth}
+					\centering
+					\includegraphics[
+						width=\linewidth,
+						height = 60mm,
+						keepaspectratio
+					]{Resultados/Control/SeawaterTemperature.png}
+					\caption{Funciones de membresía de la temperatura del agua de mar entrante}
+					\label{fig:SeawaterTemperature}
+				\end{subfigure}
+				\hfill
+				\begin{subfigure}[t]{0.45\linewidth}
+					\centering
+					\includegraphics[
+						width=\linewidth,
+						height = 60mm,
+						keepaspectratio
+					]{Resultados/Control/HeatedSeawaterTemperature.png}
+					\caption{Funciones de membresía de la temperatura del agua de mar una vez calentada}
+					\label{fig:HeatedSeawaterTemperature}
+				\end{subfigure}
+			\end{figure}
+			
+			\begin{figure}[H]\ContinuedFloat
+				\begin{subfigure}[t]{0.45\linewidth}
+					\centering
+					\includegraphics[
+						width=\linewidth,
+						height = 60mm,
+						keepaspectratio
+					]{Resultados/Control/SolarReceiverTemperature.png}
+					\caption{Funciones de membresía de la temperatura del recibidor solar}
+					\label{fig:SolarReceiverTemperature}
+				\end{subfigure}
+				\hfill
+				\caption{Funciones de membresía de las variables difusas}
+				\label{fig:var-membership-functions}
+			\end{figure}
+			
+			
 			
 			
