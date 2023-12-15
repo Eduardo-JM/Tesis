@@ -36,7 +36,7 @@
 				\label{fig:WaterModule}
 			\end{figure}
 			
-			\begin{enumerate}
+			\begin{enumerate}[columns=2]
 				\item Contenedor de agua de mar
 				\item Contenedor de agua destilada
 				\item Cámara de evaporación
@@ -54,7 +54,7 @@
 				\label{fig:SolarModule}
 			\end{figure}
 			
-			\begin{enumerate}
+			\begin{enumerate}[columns=2]
 				\item Cámara de transferencia de calor
 				\item Soporte de lente
 				\item Tapa
@@ -71,8 +71,8 @@
 				El contenedor de agua de mar consta de 2 entradas y 1 salida.
 				\begin{itemize}[columns=2]
 					\item Entrada de agua de mar
-					\item Entrada del excedente de agua caliente a evaporar
-					\item Salida hacia el Módulo de concentración solar
+					\item Entrada del excedente de agua caliente
+					\item Salida hacia el calentador solar
 				\end{itemize}
 				
 				\begin{center}
@@ -162,8 +162,33 @@
 		
 			En esta sección se detalla el proceso de ajuste y caracterización de los sensores y la bomba que regula el flujo de agua, estas calibraciones resultan indispensables para el correcto funcionamiento del método de control.
 			
-			\textbf{Termistores}
+			\textbf{Termistores}\par
 			
-		
+			Para caracterizar los termistores se refirió a un set de datos que reflejan la respuesta óhmica al aplicarse cierta temperatura; el código visto en~\cref{ch:steinhart-code}	nos permite hallar los coeficientes de Steinhart-Hart para este modelo.
+			
+			Se halló que:
+			
+			\begin{itemize}[columns=3]
+				\item A = \num{0.00112866}
+				\item B = \num{0.00023422}
+				\item C = \num{8.7159e-8}
+			\end{itemize}
+			
+			\textbf{EZO-PMP}\par
+			
+			La bomba peristáltica EZO-PMP permite una calibración manual, para ello se recreó la configuración vista en la~\cref{fig:Calibración-bomba}
+			
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[
+					width=\linewidth,
+					height=65mm,
+					keepaspectratio
+				]{Resultados/Control/PumpCalibration.png}
+				\caption{Arreglo para la calibración de la bomba EZO-PMP}
+				\floatfoot{Imagen adaptada de \cite{atlas_scientific_llc_ezo-pmp_2020}}
+				\label{fig:Calibración-bomba}
+			\end{figure}
 			
 			

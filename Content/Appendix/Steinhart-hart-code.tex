@@ -1,0 +1,22 @@
+\chapter{Código en Wolfram Mathematica para la caracterización de un termistor dada su respuesta a la temperatura}
+\label{ch:steinhart-code}
+
+\begin{lstlisting}[language={Mathematica}]
+data = Import[
+    FileNameJoin[{NotebookDirectory[], "thermistor-behavior.csv"}]][[
+   2 ;;]];
+{Temperature, R} = Transpose[data[[All, {1, 2}]]];
+
+
+(*Ajuste a la ecuación de Steinhart-Hart*)
+SteinhartHartModel = 
+  NonlinearModelFit[Transpose[{R, 1/(Temperature + 273.15)}], 
+   a + b*Log[r] + c*(Log[r])^3, {a, b, c}, r];
+
+(*Coeficientes del modelo*)
+SHCoefficients = {a, b, c} /. 
+   SteinhartHartModel["BestFitParameters"];
+Print[ "A: " <> ToString[SHCoefficients[[1]]] <> "\nB: " <> 
+  ToString[SHCoefficients[[2]]] <> "\nC: " <> 
+  ToString[SHCoefficients[[3]], TraditionalForm]]
+\end{lstlisting}
