@@ -194,7 +194,7 @@
 			
 			En la~\cref{fig:SFC_SW_DWN} observamos que de marzo a septiembre tenemos los niveles más altos de \acrlong{roc} y esta radiación se encuentra dentro de un rango de \qtyrange{5}{8}{\kWh\per\m\tothe{2}\day}.
 			
-			De las~\cref{fig:ALLSKY_SFC_SW_DWN_3d_mean_2020,ALLSKY_SFC_SW_DWN_3d_mean_2021} se observa que la irradiancia se de \acrshort{roc} de interés varía entre los \qtyrange{500}{900}{\watt\per\m\tothe{2}} y se aprecia que en mayor proporción se encuentra entre \qtyrange{600}{700}{\watt\per\m\tothe{2}} por lo que para los cálculos de operación se decide usar \qty{650}{\watt\per\m\tothe{2}} como valor de irradiancia.
+			De las~\cref{fig:ALLSKY_SFC_SW_DWN_3d_mean_2020,fig:ALLSKY_SFC_SW_DWN_3d_mean_2021} se observa que la irradiancia se de \acrshort{roc} de interés varía entre los \qtyrange{500}{900}{\watt\per\m\tothe{2}} y se aprecia que en mayor proporción se encuentra entre \qtyrange{600}{700}{\watt\per\m\tothe{2}} por lo que para los cálculos de operación se decide usar \qty{650}{\watt\per\m\tothe{2}} como valor de irradiancia.
 	
 			\begin{figure}[H]
 				\centering
@@ -665,7 +665,7 @@
 				
 				Al inicio se consideró que el recubrimiento de óxido negro sería una opción adecuada ya que de acuerdo al resultado reportado en \cite{lowery_solar_1977}, alcanza valores de absortividad para el espectro solar en el rango de 0.78 a 0.86 y de emisividad de 0.04 a 0.08 convirtiéndose así en un candidato fuerte. 
 				
-				Este recubrimiento resulta favorable en términos de rendimiento, duración y preservación de propiedades del cobre; a pesar de ello, se decidió usar pintura de alta temperatura negra de uso industrial debido a varias ventajas halladas, entre ellas, la accesibilidad, costo y facilidad de uso sin mencionar que de acuerdo a \cite{mosquera_rivera_estudio_2020} donde se comparan diferentes pinturas para su aplicación en colectores solares, la  absortividad aplicada sobre cobre resulta de un \percent{95} sobre cobre superando al óxido negro.
+				Este recubrimiento resulta favorable en términos de rendimiento, duración y preservación de propiedades del cobre; a pesar de ello, se decidió usar pintura de alta temperatura negra de uso industrial debido a varias ventajas halladas, entre ellas, la accesibilidad, costo y facilidad de uso sin mencionar que de acuerdo a \cite{mosquera_rivera_estudio_2020} donde se comparan diferentes pinturas para su aplicación en colectores solares, la  absortividad aplicada sobre cobre resulta de un \percent{95} superando al óxido negro.
 								
 				
 				Se define entonces la temperatura máxima de forma ideal que podría alcanzar el concentrador solar considerando en función \cref{equ:areas-concentracion}.
@@ -698,7 +698,7 @@
 				
 			\subsubsection{Aislamiento térmico}
 				
-				Se realizó una investigación previa sobre loa materiales candidatos como aislantes térmicos de los cuales se determinó que los siguientes materiales son potenciales candidatos: aereogel, fibra de sílice, fibra cerámica.
+				Se realizó una investigación previa sobre los materiales candidatos como aislantes térmicos de los cuales se determinó que los siguientes materiales son potenciales candidatos: aereogel, fibra de sílice, fibra cerámica.
 				
 				\begin{longtblr}[
 					caption = {Propiedades de los materiales aislantes térmicos},
@@ -744,7 +744,7 @@
 			
 			\subsubsection{General}
 				
-				Se contempla el uso de poliaftalamida para las paredes del desalinizador ya que es un termoplástico resistente a factores climáticos adversos durante largo tiempo e ideal para ser usado en exteriores además de tener baja absorción de humedad. En la~\cref{table:propiedades-poliaftalamida} se listan propiedades que se consideran importantes para el diseño.
+				En un inicio se contempló el uso de poliaftalamida para las paredes del desalinizador ya que es un termoplástico resistente a factores climáticos adversos durante largo tiempo e ideal para ser usado en exteriores además de tener baja absorción de humedad. En la~\cref{table:propiedades-poliaftalamida} se listan propiedades que se consideran importantes para el diseño.
 				
 				\begin{longtblr}[
 					caption = {Propiedades de la poliaftalamida},
@@ -771,6 +771,8 @@
 					Temperatura de fusión & \unit{\degreeCelsius} & \numrange{278}{285}
 				\end{longtblr}
 			
+			A pesar de tener buenas cualidades para este diseño, se encontraron limitaciones en la disponibilidad y accesibilidad, por lo que se sustituyó con Nylamid M, el cual es un plástico ingenieril que posee propiedades de interés, tales como: buena resistencia mecánica, buena resistencia térmica, baja disipación de calor y la cualidad de ser de grado alimenticio.
+							
 		\subsection{Definición de la alimentación}
 					
 			\subsubsection{Definición del caudal}
@@ -778,7 +780,7 @@
 				Se definirá el caudal suponiendo una transmisión perfecta y directa al agua usando el valor de $\dot{Q}_{\text{absorbedor}}$ en \eqref{equ:potencia-necesaria-sistema}.
 				
 				\begin{align*}
-				\dot{m} &= \dfrac{\qty{51.80\times\alpha_{\text{recibidor}}}{\watt}}{\qty{2493.97}{\kilo\joule\per\kg}}
+				\dot{m} &= \dfrac{\qty{51.80}{\watt}\times\alpha_{\text{recibidor}}}{\qty{2493.97}{\kilo\joule\per\kg}}
 						& \dot{m} &= \dfrac{\qty{49.21}{\watt}}{\qty{2493.97}{\kilo\joule\per\kg}}
 						& \dot{m} &= \qty{0.0197}{\gram\per\s}
 				\end{align*}
