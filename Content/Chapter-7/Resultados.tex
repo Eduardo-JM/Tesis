@@ -142,10 +142,154 @@
 					En este módulo se monitorea la temperatura del recibidor solar.
 				\end{center}
 		
-		\subsection{Simulaciones}
+		\subsection{Simulaciones del sistema desalinizador}
 			
 			Se realizaron varias simulaciones de transferencia de calor con el fin de validar los diseños propuestos, los materiales seleccionados y el caudal propuesto durante el desarrollo experimental. A su vez, se realizaron simulaciones del flujo de aire en la cámara de evaporación con el fin de validar el diseño visto en la~\cref{fig:EvaporationSurface}.
-	
+			
+			\subsubsection{Materiales y geometría}
+			
+				\textbf{Transferencia de calor}\par
+			
+				Con el fin de descartar los materiales a utilizar para intercambiar calor con el recibidor solar, se simuló transferencia de calor con cobre, aluminio y acero inoxidable. De estas simulaciones se concluyó que:
+				
+				\begin{enumerate}
+					\item El acero inoxidable no proporciona una conducción suficiente de calor, ya que el recibidor empieza a sobrecalentarse mientras que el agua no adquiere la temperatura suficiente. Si se observa detenidamente la~\cref{fig:stainless-steel-heat-transfer} se observa que el agua se calienta cuando está más cerca del recibidor, sin embargo, el calor no llega a toda la tubería, por lo que esta se vuelve a enfriar una vez se aleja del recibidor. Además, el recibidor comienza a sobrecalentarse al no deshacerse del calor, transfiriéndolo a los aislantes térmicos y los alrededores del recibidor. 
+					\item El cobre es un buen candidato, ya que la tubería se calienta uniforme y rápidamente, además, el agua adquiere una temperatura poco menor que la del recibidor.
+					
+					\item El aluminio 5052 es un buen candidato, ya que la tubería se calienta rápidamente, sin embargo, incrementa la diferencia entre la temperatura del agua y la del recibidor en contraste con el cobre.
+				\end{enumerate}
+				
+				\begin{figure}[H]
+					\centering
+					\begin{subfigure}[t]{\linewidth}
+						\centering
+						\includegraphics[
+							width=\linewidth,
+							height = 60mm,
+							keepaspectratio
+						]{Resultados/Simulaciones/50W-StainleesSteel-15C-9mlpm-middle.png}
+						\caption{Corte en el centro del recibidor solar y su transferencia de calor hacia el acero inoxidable 316}
+						\label{fig:50W-StainleesSteel-15C-9mlpm-middle}
+					\end{subfigure}
+				\end{figure}
+			
+				\begin{figure}[H]\ContinuedFloat
+					\begin{subfigure}[t]{\linewidth}
+						\centering
+						\includegraphics[
+							width=\linewidth,
+							height = 60mm,
+							keepaspectratio
+						]{Resultados/Simulaciones/50W-StainleesSteel-15C-9mlpm.png}
+						\caption{Corte en la entrada y salida del agua de mar}
+						\label{fig:50W-StainleesSteel-15C-9mlpm}
+					\end{subfigure}
+					\hfill
+					\caption{Transferencia de calor en el acero inoxidable}
+					\label{fig:stainless-steel-heat-transfer}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\begin{subfigure}[t]{\linewidth}
+						\centering
+						\includegraphics[
+							width=\linewidth,
+							height = 60mm,
+							keepaspectratio
+						]{Resultados/Simulaciones/50WCopper15C9mlpm-middle.png}
+						\caption{Corte en el centro del recibidor solar y su transferencia de calor hacia el cobre}
+						\label{fig:50WCopper15C9mlpm-middle}
+					\end{subfigure}
+				\end{figure}
+			
+				\begin{figure}[H]\ContinuedFloat
+					\begin{subfigure}[t]{\linewidth}
+						\centering
+						\includegraphics[
+							width=\linewidth,
+							height = 60mm,
+							keepaspectratio
+						]{Resultados/Simulaciones/50WCopper15C9mlpm.png}
+						\caption{Corte en la entrada y salida del agua de mar}
+						\label{fig:50WCopper15C9mlpm}
+					\end{subfigure}
+					\hfill
+					\caption{Transferencia de calor en el cobre}
+					\label{fig:copper-heat-transfer}
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\begin{subfigure}[t]{\linewidth}
+						\centering
+						\includegraphics[
+							width=\linewidth,
+							height = 60mm,
+							keepaspectratio
+						]{Resultados/Simulaciones/50WAluminum15C9mlpm-middle.png}
+						\caption{Corte en el centro del recibidor solar y su transferencia de calor hacia el aluminio}
+						\label{fig:50WAluminum15C9mlpm-middle}
+					\end{subfigure}
+				\end{figure}
+			
+				\begin{figure}[H]\ContinuedFloat
+					\begin{subfigure}[t]{\linewidth}
+						\centering
+						\includegraphics[
+							width=\linewidth,
+							height = 60mm,
+							keepaspectratio
+						]{Resultados/Simulaciones/50WAluminum15C9mlpm.png}
+						\caption{Corte en la entrada y salida del agua de mar}
+						\label{fig:50WAluminum15C9mlpm}
+					\end{subfigure}
+					\hfill
+					\caption{Transferencia de calor en el aluminio}
+					\label{fig:aluminum-heat-transfer}
+				\end{figure}
+				
+				Debido al tiempo que tomó cada simulación, no se buscó la convergencia, ya que requeriría un lapso mucho mayor al actual, en cambio, se simularon 300 segundos de transferencia de calor los tres materiales bajo las condiciones halladas en el desarrollo experimental. De las gráficas de convergencia, se dedujo que la información proporcionada era suficiente para con estos datos tomar la decisión.
+				
+				De lo anterior, cabe mencionar que la temperatura del recibidor en el caso del acero inoxidable seguiría creciendo más y más rápidamente que en el caso del aluminio y del cobre quienes ya estaban cerca del punto de convergencia.
+				
+				\textbf{Flujo de aire en la cámara de evaporación}\par
+			
+				De acuerdo a lo visto en la~\cref{fig:AirflowInEvaporationChamber} la superficie de evaporación incrementa casi al triple la superficie de evaporación y no disminuye sustancialmente el flujo de aire dentro de la cámara, por lo cual su incorporación queda justificada.
+				
+				\begin{figure}[H]
+					\centering
+					\begin{subfigure}[t]{0.45\linewidth}
+						\centering
+						\includegraphics[
+							width=\linewidth,
+							height = 60mm,
+							keepaspectratio
+						]{Resultados/Simulaciones/AirflowWithoutEvaporationSurface.png}
+						\caption{Flujo de aire sin superficie de evaporación}
+						\label{fig:AirflowWithoutEvaporationSurface}
+					\end{subfigure}
+					\hfill
+					\begin{subfigure}[t]{0.45\linewidth}
+						\centering
+						\includegraphics[
+							width=\linewidth,
+							height = 60mm,
+							keepaspectratio
+						]{Resultados/Simulaciones/AirflowWithEvaporationSurface.png}
+						\caption{Flujo de aire con superficie de evaporación}
+						\label{fig:AirflowWithEvaporationSurface}
+					\end{subfigure}
+					\caption{Flujo de aire en la cámara de evaporación}
+					\label{fig:AirflowInEvaporationChamber}
+				\end{figure}
+		
+			\subsubsection{Comportamiento con la variación de flujo}
+				
+				Las simulaciones presentadas en esta sección se realizaron con el fin de validar las reglas y funciones de membresía del control difuso propuesto.
+				
+				
+				
 	\section{Control del sistema}
 	
 		Tras el estudio y comparación de las ventajas y desventajas de diferentes métodos de control numérico se concluyó que el método de control difuso se acoplaba mejor a las necesidades del sistema ya que:
@@ -179,7 +323,6 @@
 			
 			La bomba peristáltica EZO-PMP permite una calibración manual, para ello se recreó la configuración vista en la~\cref{fig:Calibración-bomba}
 			
-			
 			\begin{figure}[H]
 				\centering
 				\includegraphics[
@@ -194,10 +337,9 @@
 		
 		\subsection{Modelo y reglas del control difuso}
 			
-			Debido a que un gran número de variables pueden complicar exponencialmente la complejidad del algoritmo y las reglas, se decidió acotar las variables de este modelo exclusivamente a la temperatura del agua de entrada, del agua por evaporar y del recibidor solar.
+			Debido a que un gran número de variables pueden complicar exponencialmente la complejidad del algoritmo y las reglas, se decidió acotar las variables de este modelo exclusivamente a la temperatura del agua de entrada, del agua por evaporar y del recibidor solar.			
 			
-			
-			De estas se definieron 5 categorías y sus respectivas membresías visibles en la~\cref{fig:var-membership-functions}.
+			De estas se definieron 5 categorías y sus respectivas membresías visibles en la~\cref{fig:var-membership-functions}. Estas membresías se ajustaron de acuerdo a numerosas simulaciones realizadas que dieron una comprensión aproximada de la respuesta del sistema a una variación de la temperatura del agua de entrada y la cantidad de potencia generada por el concentrador solar. De ahí mismo, se obtuvo el conjunto de membresías que corresponden a la respuesta difusa, la cual se puede apreciar en la~\cref{fig:FlowVelocity}.
 			
 			\begin{figure}[H]
 				\centering
@@ -239,6 +381,89 @@
 				\caption{Funciones de membresía de las variables difusas}
 				\label{fig:var-membership-functions}
 			\end{figure}
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[
+					width=\linewidth,
+					height=65mm,
+					keepaspectratio
+				]{Resultados/Control/FlowVelocity.png}
+				\caption{Funciones de membresía de la respuesta difusa.}
+				\label{fig:FlowVelocity}
+			\end{figure}
+			
+			Una vez tenidas las funciones de membresía se crearon dos sets de reglas.
+			
+			\textbf{Reglas superiores}\par
+			
+			Estas reglas se colocaron sobre las demás reglas con el fin de proteger y no superar los rangos de temperatura que soportan los componentes electrónicos utilizados. También se incluyeron aquellas que suspenden el flujo de agua en caso de considerarse necesario.
+			
+			\begin{itemize}
+				\item Si la temperatura del recibidor solar es muy baja, el caudal es nulo
+				\item Si la temperatura del recibidor solar es baja, y la temperatura del agua de entrada es baja o muy baja, el caudal es nulo
+				\item Si la temperatura del agua a evaporar es muy alta y la temperatura del recibidor solar es media, alta o muy alta, el caudal es muy alto
+				\item Si la temperatura del agua a evaporar es muy alta y la temperatura del recibidor solar es baja o muy baja, el caudal es alto
+			\end{itemize}
+			
+			\textbf{Reglas generales}\par
+			
+			Estas reglas se ejecutan después de que las reglas superiores son evaluadas y se dividen de acuerdo a la temperatura del recibidor solar
+			
+			\textit{Si la temperatura del recibidor solar es baja:}\par
+			\begin{itemize}
+				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es muy alta, el caudal es medio
+				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es alta, el caudal es bajo
+				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es media, el caudal es muy bajo
+			\end{itemize}
+			
+			\textit{Si la temperatura del recibidor solar es media:}\par
+			\begin{itemize}
+				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es muy baja, el caudal es muy bajo
+				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es baja, el caudal es bajo
+				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es media, el caudal es medio
+				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es alta o muy alta, el caudal es alto
+			\end{itemize}
+			
+			\textit{Si la temperatura del recibidor solar es alta:}\par
+			\begin{itemize}
+				\item Si la temperatura del recibidor solar es media o alta y la temperatura del agua de entrada es muy baja, el caudal es bajo.
+				\item Si la temperatura del recibidor solar es media o alta y la temperatura del agua de entrada es baja, el caudal es medio
+			\end{itemize}
+			
+			\textit{Si la temperatura del recibidor solar es muy alta:}\par
+			\begin{itemize}
+				\item Si la temperatura del recibidor solar es media pero no baja y la temperatura del agua de entrada es muy alta, el caudal es alto
+				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es muy alta, el caudal es alto
+				\item Si la temperatura del recibidor solar es alta y la temperatura del agua de entrada es muy alta o alta, el caudal es alto
+				\item Si la temperatura del recibidor solar es muy alta y la temperatura del agua de entrada es muy alta o alta, el caudal es muy alto
+			\end{itemize}
+			
+			Este conjunto de reglas tienen como objetivo tratar de mantener la temperatura del agua entre \qtyrange{60}{65}{\degreeCelsius} con el fin de evitar daños en los componentes eléctricos.
+			
+		
+	\section{Integración al seguidor solar}
+	
+		Para integrar el sistema al seguidor solar, se construyó un marco que soportara la lente, la altura de colocación de la lente se calculó mediante la ley de Snell y trigonometría siguiendo el arreglo mostrado en la~\cref{fig:DiagramaRayos}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[
+				width=\linewidth,
+				height=65mm,
+				keepaspectratio
+			]{Resultados/Integración/DiagramaRayos.png}
+			\caption{Trazado de rayos que permiten calcular la altura de la lente con respecto al punto focal.}
+			\label{fig:DiagramaRayos}
+		\end{figure}
+		
+		
+		De los cálculos hechos, se obtuvo una altura al punto focal de \qty{362.45}{\mm}. A eso se le sumó la altura del recibidor solar con respecto al módulo de concentración solar dando que la altura mínima del marco es de \qty{442.50}{\mm}
+			
+			
+			
+
+
 			
 			
 			
