@@ -11,7 +11,11 @@
 	
 		\begin{figure}
 			\centering
-			\includegraphics[width=\linewidth, height=12cm, keepaspectratio]{Resultados/Sistema/VistaGeneral.png}
+			\includegraphics[
+				width=\linewidth,
+				height=12cm,
+				keepaspectratio
+			]{Resultados/Sistema/VistaGeneral.png}
 			\caption{Vista general del proceso de desalinización}
 			\label{fig:VistaGeneral}
 		\end{figure}
@@ -150,13 +154,13 @@
 			
 				\textbf{Transferencia de calor}\par
 			
-				Con el fin de descartar los materiales a utilizar para intercambiar calor con el recibidor solar, se simuló transferencia de calor con cobre, aluminio y acero inoxidable. De estas simulaciones se concluyó que:
+				Con el fin de observar el desempeño de los materiales a utilizar para intercambiar calor con el recibidor solar, se simuló transferencia de calor con cobre, aluminio y acero inoxidable bajo condiciones favorables (Alta generación de calor). De estas simulaciones se concluyó que:
 				
 				\begin{enumerate}
-					\item El acero inoxidable no proporciona una conducción suficiente de calor, ya que el recibidor empieza a sobrecalentarse mientras que el agua no adquiere la temperatura suficiente. Si se observa detenidamente la~\cref{fig:stainless-steel-heat-transfer} se observa que el agua se calienta cuando está más cerca del recibidor, sin embargo, el calor no llega a toda la tubería, por lo que esta se vuelve a enfriar una vez se aleja del recibidor. Además, el recibidor comienza a sobrecalentarse al no deshacerse del calor, transfiriéndolo a los aislantes térmicos y los alrededores del recibidor. 
+					\item El acero inoxidable no proporciona una conducción suficiente de calor, ya que el recibidor empieza a sobrecalentarse mientras que el agua no adquiere la temperatura suficiente. Si se observa detenidamente la~\cref{fig:stainless-steel-heat-transfer} se observa que el agua se calienta cuando está más cerca del recibidor, sin embargo, el calor no llega a toda la tubería, por lo que esta se vuelve a enfriar una vez que se aleja del recibidor. Además, el recibidor comienza a sobrecalentarse al no deshacerse del calor, transfiriéndolo a los aislantes térmicos y los alrededores del recibidor. 
 					\item El cobre es un buen candidato, ya que la tubería se calienta uniforme y rápidamente, además, el agua adquiere una temperatura poco menor que la del recibidor.
 					
-					\item El aluminio 5052 es un buen candidato, ya que la tubería se calienta rápidamente, sin embargo, incrementa la diferencia entre la temperatura del agua y la del recibidor en contraste con el cobre.
+					\item El aluminio 5052 es un buen candidato, ya que la tubería se calienta rápidamente, sin embargo, incrementa la diferencia entre la temperatura del agua y la del recibidor en contraste con el cobre, sin mencionar que el agua se calienta de manera menos uniforme.
 				\end{enumerate}
 				
 				\begin{figure}[H]
@@ -171,10 +175,8 @@
 						\caption{Corte en el centro del recibidor solar y su transferencia de calor hacia el acero inoxidable 316}
 						\label{fig:50W-StainleesSteel-15C-9mlpm-middle}
 					\end{subfigure}
-				\end{figure}
-			
-				\begin{figure}[H]\ContinuedFloat
-					\begin{subfigure}[t]{\linewidth}
+					\hfill
+					\begin{subfigure}[t]{0.45\linewidth}
 						\centering
 						\includegraphics[
 							width=\linewidth,
@@ -201,9 +203,7 @@
 						\caption{Corte en el centro del recibidor solar y su transferencia de calor hacia el cobre}
 						\label{fig:50WCopper15C9mlpm-middle}
 					\end{subfigure}
-				\end{figure}
-			
-				\begin{figure}[H]\ContinuedFloat
+					\hfill
 					\begin{subfigure}[t]{\linewidth}
 						\centering
 						\includegraphics[
@@ -231,9 +231,7 @@
 						\caption{Corte en el centro del recibidor solar y su transferencia de calor hacia el aluminio}
 						\label{fig:50WAluminum15C9mlpm-middle}
 					\end{subfigure}
-				\end{figure}
-			
-				\begin{figure}[H]\ContinuedFloat
+					\hfill
 					\begin{subfigure}[t]{\linewidth}
 						\centering
 						\includegraphics[
@@ -249,13 +247,24 @@
 					\label{fig:aluminum-heat-transfer}
 				\end{figure}
 				
-				Debido al tiempo que tomó cada simulación, no se buscó la convergencia, ya que requeriría un lapso mucho mayor al actual, en cambio, se simularon 300 segundos de transferencia de calor los tres materiales bajo las condiciones halladas en el desarrollo experimental. De las gráficas de convergencia, se dedujo que la información proporcionada era suficiente para con estos datos tomar la decisión.
+				Se simularon 300 segundos de transferencia de calor de los tres materiales bajo las condiciones halladas en el desarrollo experimental en lugar de buscar la convergencia, ya que esto requeriría un tiempo mucho mayor y observando el comportamiento de la temperatura del recibidor se concluyó que la información proporcionada fue suficiente para llegar a una conjetura.
 				
-				De lo anterior, cabe mencionar que la temperatura del recibidor en el caso del acero inoxidable seguiría creciendo más y más rápidamente que en el caso del aluminio y del cobre quienes ya estaban cerca del punto de convergencia.
+				De las simulaciones se observó que la temperatura del recibidor solar crecía más rápidamente que la temperatura del agua de salida; en cambio, el cobre y el aluminio tuvieron mejores respuestas.
+				
+				\textit{Producto de estas simulaciones}
+				
+				Las anteriores simulaciones ayudaron a comprender un poco más la respuesta del sistema y con base en ello se tomaron las siguientes decisiones.
+				
+				\begin{itemize}
+					\item Se descartó el uso de acero inoxidable como material para la tubería
+					\item Se aceptó el uso de aluminio 5052 como material para la tubería pero se identificaron ciertas limitaciones en contraste con el cobre como menor ductibilidad, menor transferencia de calor pero mayor resistencia a la corrosión.
+					\item Los criterios de manufacturabilidad cambiaron cuando se eligió el cobre como material para la tubería. Como resultado, se propuso un nuevo diseño para mejorar la homogeneidad de la temperatura del agua, como se muestra en la~\cref{fig:HeatTransferBetweenSRandPipe}.
+				\end{itemize}
+				
 				
 				\textbf{Flujo de aire en la cámara de evaporación}\par
 			
-				De acuerdo a lo visto en la~\cref{fig:AirflowInEvaporationChamber} la superficie de evaporación incrementa casi al triple la superficie de evaporación y no disminuye sustancialmente el flujo de aire dentro de la cámara, por lo cual su incorporación queda justificada.
+				La superficie de evaporación vista en la~\cref{fig:EvaporationSurface} incrementa a más del doble la superficie de evaporación y no disminuye sustancialmente el flujo de aire dentro de la cámara como se observa en la~\cref{fig:AirflowInEvaporationChamber}, por lo cual se justifica parcialmente su incorporación al desalinizador dado que falta evaluar su influencia en la acumulación de sales dentro de la cámara.
 				
 				\begin{figure}[H]
 					\centering
@@ -284,10 +293,7 @@
 					\label{fig:AirflowInEvaporationChamber}
 				\end{figure}
 		
-			\subsubsection{Comportamiento con la variación de flujo}
-				
-				Las simulaciones presentadas en esta sección se realizaron con el fin de validar las reglas y funciones de membresía del control difuso propuesto.
-				
+			
 				
 				
 	\section{Control del sistema}
@@ -309,7 +315,7 @@
 			
 			\textbf{Termistores}\par
 			
-			Para caracterizar los termistores se refirió a un set de datos que reflejan la respuesta óhmica al aplicarse cierta temperatura; el código visto en~\cref{ch:steinhart-code}	nos permite hallar los coeficientes de Steinhart-Hart para este modelo.
+			Para caracterizar los termistores se refirió a un set de datos que reflejan la respuesta óhmica al aplicarse cierta temperatura; el código visto en~\cref{ch:steinhart-code} nos permite hallar los coeficientes de Steinhart-Hart para este modelo.
 			
 			Se halló que:
 			
@@ -334,6 +340,24 @@
 				\floatfoot{Imagen adaptada de \cite{atlas_scientific_llc_ezo-pmp_2020}}
 				\label{fig:Calibración-bomba}
 			\end{figure}
+		
+		\subsection{Comportamiento con la variación de flujo}
+				
+				En esta sección se presenta evidencia de las simulaciones realizadas para definir el universo de discurso de las variables lingüísticas de las variables difusas. Como se observa en la~\cref{fig:FuzzyUniverse} se estudiaron las respuestas de variar la temperatura del agua entrante, el caudal y el calor capturado por el concentrador solar.
+								
+				\begin{figure}[H]
+					\centering
+					\includegraphics[
+						width=\linewidth,
+						height = 60mm,
+						keepaspectratio
+					]{Resultados/Simulaciones/FuzzyUniverse.png}
+					\caption{Captura de pantalla de Autodesk CFD mostrando una vista general de las simulaciones realizadas}
+					\label{fig:FuzzyUniverse}
+				\end{figure}
+								
+				De lo anterior, se descubrió que el caudal tiene el mayor impacto en la respuesta del sistema. Por ello, se propuso utilizar una función de membresía de tipo triangular que representa con mayor precisión los cambios bruscos del sistema para representar con mayor precisión los efectos del caudal en la respuesta del sistema. En cuanto a la temperatura del receptor solar, se encontró que su respuesta era más suave en comparación, pero todavía tenía una respuesta rápida. Por lo tanto, se propuso una función gaussiana debido a que se ajusta más al comportamiento observado.
+				
 		
 		\subsection{Modelo y reglas del control difuso}
 			
@@ -440,11 +464,29 @@
 			\end{itemize}
 			
 			Este conjunto de reglas tienen como objetivo tratar de mantener la temperatura del agua entre \qtyrange{60}{65}{\degreeCelsius} con el fin de evitar daños en los componentes eléctricos.
-			
+	
+	
+	\section{Construcción e integración del sistema}
 		
+		\section{Módulo de reaprovechamiento térmico y bombeo}
+		
+			El intercambiador de calor 
+			
+			\begin{figure}[H]
+				\centering
+				\includegraphics[
+					width=\linewidth,
+					height=65mm,
+					keepaspectratio
+				]{Resultados/Construcción/Intercambiador-de-calor.jpeg}
+				\caption{Intercambiador de calor con aletas verticales}
+				\label{fig:Intercambiador-de-calor.jpeg}
+			\end{figure}
+		
+	
 	\section{Integración al seguidor solar}
 	
-		Para integrar el sistema al seguidor solar, se construyó un marco que soportara la lente, la altura de colocación de la lente se calculó mediante la ley de Snell y trigonometría siguiendo el arreglo mostrado en la~\cref{fig:DiagramaRayos}
+		Para integrar el desalinizador al seguidor solar, se construyó un marco que soportara la lente, la altura de colocación de la lente se calculó mediante la ley de Snell y trigonometría siguiendo el arreglo mostrado en la~\cref{fig:DiagramaRayos}.
 		
 		\begin{figure}[H]
 			\centering
@@ -459,7 +501,7 @@
 		
 		
 		De los cálculos hechos, se obtuvo una altura al punto focal de \qty{362.45}{\mm}. A eso se le sumó la altura del recibidor solar con respecto al módulo de concentración solar dando que la altura mínima del marco es de \qty{442.50}{\mm}
-			
+		
 			
 			
 
