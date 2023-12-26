@@ -305,26 +305,12 @@
 					\caption{Flujo de aire en la cámara de evaporación}
 					\label{fig:AirflowInEvaporationChamber}
 				\end{figure}
-		
-			
-				
 				
 	\section{Control del sistema}
 	
-		Tras el estudio y comparación de las ventajas y desventajas de diferentes métodos de control numérico se concluyó que el método de control difuso se acoplaba mejor a las necesidades del sistema ya que:
-		
-		\begin{itemize}
-			\item El modelo de contro difuso permite hacer razonamientos para evaluar el grado de certidumbre de una afirmación en vez de limitarse a una lógica binaria donde se producen saltos de una afirmación a otra.
-			\item Permite crear un modelo de control basado en reglas fácilmente interpretables
-			\item No requiere un modelo matemático u aproximación numérica del proceso, sino, en conocimiento empírico, lo cual es muy beneficioso, ya que tanto el proceso de evaporación como el de ebullición es un fenómeno muy complejo y difícilmente modelable.
-			\item Permite tomar decisiones de conocimientos y datos inexactos de forma similar al razonamiento humano
-		\end{itemize}
-		
-		El control difuso se centró en la regulación del flujo de agua de mar debido a la naturaleza variable e intermitente de la fuente de energía. En consecuencia, resultó fundamental supervisar la energía recibida y ajustar el caudal en función de esta variabilidad. Además, se implementó un segundo sistema de control independiente que controla los niveles de agua en el módulo de reaprovechamiento térmico y bombeo.
-		
 		\subsection{Sensores y componentes, calibración y caracterización}\label{subsec:calibración}
 		
-			En esta sección se detalla el proceso de ajuste y caracterización de los sensores y la bomba que regula el flujo de agua, estas calibraciones resultan indispensables para el correcto funcionamiento del método de control.
+			A continuación se detalla el proceso de ajuste y caracterización de los sensores y la bomba que regula el flujo de agua, estas calibraciones resultan indispensables para el correcto funcionamiento del método de control.
 			
 			\textbf{Termistores}\par
 			
@@ -353,14 +339,26 @@
 				\floatfoot{Imagen adaptada de \cite{atlas_scientific_llc_ezo-pmp_2020}}
 				\label{fig:Calibración-bomba}
 			\end{figure}
+			
+		\subsection{Selección del método de control}
+	
+			Considerando el tamaño del sistema y las diferentes funciones que debe atender, se decidió dividir el control en dos partes, la primera regula el flujo de agua que pasa por el recibidor solar y la última se centra en abastecer y vaciar el sistema, es decir, se encarga de vaciar el agua condensada, la salmuera y restablecer los niveles de agua de mar. Debido a la naturaleza más simple de la segunda parte del control, se proporcionará una explicación breve al final. Por el momento, se justificará la selección del método de control propuesto.
+			
+		
+			En la primera etapa, se llevaron a cabo estudios comparativos para evaluar distintos métodos de control, analizando sus ventajas y desventajas. Tras este análisis, se llegó a la conclusión de que el método de control difuso se acoplaba mejor a las necesidades del sistema ya que:
+			
+			\begin{itemize}
+				\item El modelo de contro difuso permite hacer razonamientos para evaluar el grado de certidumbre de una afirmación en vez de limitarse a una lógica binaria donde se producen saltos de una afirmación a otra.
+				\item Permite crear un modelo de control basado en reglas fácilmente interpretables
+				\item No requiere un modelo matemático u aproximación numérica del proceso, sino, en conocimiento empírico, lo cual es muy beneficioso, ya que tanto el proceso de evaporación como el de ebullición es un fenómeno muy complejo y difícilmente modelable.
+				\item Permite tomar decisiones de conocimientos y datos inexactos de forma similar al razonamiento humano
+			\end{itemize}		
 		
 		\subsection{Modelo y reglas del control difuso}
 				
-			En esta sección se presenta evidencia de las simulaciones realizadas, las cuales sirvieron para delimitar el universo de discurso de las variables difusas y comprender su impacto en el modelo.
-				
 			Se decidió restringir las variables difusas exclusivamente a la temperatura del agua de entrada y la del recibidor solar. Esta decisión se tomó considerando que un gran número de variables podría aumentar exponencialmente la complejidad del algoritmo y las reglas.
 			
-			En la~\cref{fig:FuzzyUniverse} se muestra brevemente evidencia de las diferentes simulaciones hechas. En estas se estudiaron las respuestas al variar la temperatura del agua entrante, el caudal y el calor capturado por el concentrador solar.
+			Con el fin de definir las funciones de membresía se se estudió la respuesta del sistema  variando el caudal, la temperatura del agua entrante y el calor capturado por el concentrador solar. Mediante simulaciones se pudo delimitar el universo de discurso de las variables difusas y comprender su impacto en el modelo.	En la~\cref{fig:FuzzyUniverse} se muestra brevemente evidencia de las diferentes simulaciones hechas.
 								
 			\begin{figure}[H]
 				\centering
@@ -383,7 +381,7 @@
 						
 			Se propuso entonces utilizar una función de membresía triangular para el caudal, ya que representa con mayor precisión los cambios bruscos que produce en la respuesta del sistema. En cuanto a la temperatura del receptor solar, se propuso una función gaussiana debido a que se ajusta más al comportamiento observado.
 			
-			Posteriormente se definieron 5 variables lingüísticas y sus respectivas membresías, esras son visibles en las~\cref{fig:var-membership-functions,fig:FlowVelocity}.
+			Posteriormente se definieron las variables lingüísticas y sus respectivas membresías. En las dos variables difusas de entrada, se establecieron cinco variables lingüísticas cada una, mientras que en la variable difusa de salida se definieron seis variables lingüísticas. Estas membresías y sus respectivos rangos son visibles en las~\cref{fig:var-membership-functions,fig:FlowVelocity}.
 			
 			\begin{figure}[H]
 				\centering
@@ -408,6 +406,8 @@
 					\caption{Funciones de membresía de la temperatura del recibidor solar}
 					\label{fig:SolarReceiverTemperature}
 				\end{subfigure}
+				\caption{Funciones de membresía de las variables difusas de entrada}
+				\label{fig:var-membership-functions}
 			\end{figure}
 			
 			\begin{figure}[H]
@@ -421,7 +421,7 @@
 				\label{fig:FlowVelocity}
 			\end{figure}
 			
-			Una vez llegado a este punto se definieron las reglas que rigen el sistema difuso. Para representarlas con un mayor orden se dividieron en bloques.
+			Una vez llegado a este punto se definieron las reglas que rigen el sistema difuso. Para leerse con mayor facilidad se dividieron en bloques.
 			
 			\textit{Si la temperatura del recibidor solar es muy baja:}\par
 			
@@ -431,35 +431,46 @@
 			
 			\textit{Si la temperatura del recibidor solar es baja:}\par
 			\begin{itemize}
-				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es muy alta, el caudal es medio
-				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es alta, el caudal es bajo
-				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es media, el caudal es muy bajo
+				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es muy alta, el caudal es medio.
+				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es alta, el caudal es bajo.
+				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es media pero no es baja, el caudal es muy bajo.
+				\item Si la temperatura del recibidor solar es baja y además no es muy baja, y la temperatura del agua de entrada es muy baja o baja, el caudal es nulo.
 			\end{itemize}
 			
 			\textit{Si la temperatura del recibidor solar es media:}\par
 			\begin{itemize}
-				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es muy baja, el caudal es muy bajo
-				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es baja, el caudal es bajo
-				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es media, el caudal es medio
-				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es alta o muy alta, el caudal es alto
+				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es alta o muy alta, el caudal es alto.
+				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es media, el caudal es medio.
+				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es baja, el caudal es bajo.
+				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es muy baja, el caudal es muy bajo.
+				
 			\end{itemize}
 			
 			\textit{Si la temperatura del recibidor solar es alta:}\par
 			\begin{itemize}
-				\item Si la temperatura del recibidor solar es media o alta y la temperatura del agua de entrada es muy baja, el caudal es bajo.
-				\item Si la temperatura del recibidor solar es media o alta y la temperatura del agua de entrada es baja, el caudal es medio
+				\item Si la temperatura del recibidor solar es alta y la temperatura del agua de entrada es alta o muy alta, el caudal es muy alto
+				\item Si la temperatura del recibidor solar es alta y la temperatura del agua de entrada es media, el caudal es alto.
+				\item Si la temperatura del recibidor solar es alta y la temperatura del agua de entrada es baja, el caudal es medio.
+				\item Si la temperatura del recibidor solar es alta y la temperatura del agua de entrada es muy baja, el caudal es bajo.
 			\end{itemize}
 			
 			\textit{Si la temperatura del recibidor solar es muy alta:}\par
 			\begin{itemize}
-				\item Si la temperatura del recibidor solar es media pero no baja y la temperatura del agua de entrada es muy alta, el caudal es alto
-				\item Si la temperatura del recibidor solar es media y la temperatura del agua de entrada es muy alta, el caudal es alto
-				\item Si la temperatura del recibidor solar es alta y la temperatura del agua de entrada es muy alta o alta, el caudal es alto
-				\item Si la temperatura del recibidor solar es muy alta y la temperatura del agua de entrada es muy alta o alta, el caudal es muy alto
+				\item Si la temperatura del recibidor solar es muy alta, y la temperatura del agua de entrada es muy alta el caudal es sumamente alto
+				\item Si la temperatura del recibidor solar es muy alta y la temperatura del agua de entrada es alta, el caudal es muy alto
+				\item Si la temperatura del recibidor solar es muy alta y la temperatura del agua de entrada es media, el caudal es alto
+				\item Si la temperatura del recibidor solar es muy alta y la temperatura del agua de entrada es baja, el caudal es medio
+				\item Si la temperatura del recibidor solar es muy alta y la temperatura del agua de entrada es muy baja, el caudal es bajo
 			\end{itemize}
 			
-			Este conjunto de reglas tienen como objetivo tratar de mantener la temperatura del agua entre \qtyrange{60}{65}{\degreeCelsius} con el fin de evitar daños en los componentes eléctricos.
-	
+			Este conjunto de reglas tienen como objetivo tratar de mantener la temperatura del agua entre \qtyrange{62.5}{67.5}{\degreeCelsius} con el fin de evitar daños en los componentes eléctricos. Aunque se observó que sería un caso improbable, se decidió agregar una función protectora que aumenta el caudal al máximo si la temperatura del agua a evaporar se acerca peligrosamente a los \qty{70}{\degreeCelsius} (límite de operación de los componentes eléctricos seleccionados).
+		
+		\subsection{Automatización del vaciado y llenado de nuestros módulos}
+			
+			Como se explicó anteriormente, esta segunda parte del control se encarga de administrar los volúmenes de agua dentro del ``Módulo de reaprovechamiento térmico y bombeo''.
+			
+			Para el contenedor de agua de mar, se usa un sensor de nivel para saber cuándo es necesario suministrar más agua al contenedor. Caso contrario, en el contenedor de agua destilada, se usa para saber cuándo es necesario vaciarlo. En el caso de la cámara de evaporación, se usa el sensor de temperatura y el estado del sistema de control difuso para saber si hay salmuera en la cámara. Si la temperatura de la salmuera baja de los \qty{40}{\degreeCelsius} o han transcurrido 2 horas de operación, se vacía la salmuera.
+			
 	
 	\section{Construcción e integración del sistema}
 		
