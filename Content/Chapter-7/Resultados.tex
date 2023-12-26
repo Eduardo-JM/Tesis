@@ -271,7 +271,7 @@
 				\begin{itemize}
 					\item Se descartó el uso de acero inoxidable como material para la tubería
 					\item Se aceptó el uso de aluminio 5052 como material para la tubería pero se identificaron ciertas limitaciones en contraste con el cobre como menor ductibilidad, menor transferencia de calor pero mayor resistencia a la corrosión.
-					\item Los criterios de manufacturabilidad cambiaron cuando se eligió el cobre como material para la tubería. Como resultado, se propuso un nuevo diseño para mejorar la homogeneidad de la temperatura del agua, como se muestra en la~\cref{fig:HeatTransferBetweenSRandPipe}.
+					\item Los criterios de manufacturabilidad cambiaron cuando se eligió el cobre como material para la tubería. Como resultado, se propuso un nuevo diseño para mejorar la homogeneidad de la temperatura del agua, esto se muestra en la~\cref{fig:FuzzyUniverse}.
 				\end{itemize}
 				
 				
@@ -354,29 +354,36 @@
 				\label{fig:Calibración-bomba}
 			\end{figure}
 		
-		\subsection{Comportamiento con la variación de flujo}
-				
-				En esta sección se presenta evidencia de las simulaciones realizadas para definir el universo de discurso de las variables lingüísticas de las variables difusas. Como se observa en la~\cref{fig:FuzzyUniverse} se estudiaron las respuestas de variar la temperatura del agua entrante, el caudal y el calor capturado por el concentrador solar.
-								
-				\begin{figure}[H]
-					\centering
-					\includegraphics[
-						width=\linewidth,
-						height = 60mm,
-						keepaspectratio
-					]{Resultados/Simulaciones/FuzzyUniverse.png}
-					\caption{Captura de pantalla de Autodesk CFD mostrando una vista general de las simulaciones realizadas}
-					\label{fig:FuzzyUniverse}
-				\end{figure}
-								
-				De lo anterior, se descubrió que el caudal tiene el mayor impacto en la respuesta del sistema. Por ello, se propuso utilizar una función de membresía de tipo triangular que representa con mayor precisión los cambios bruscos del sistema para representar con mayor precisión los efectos del caudal en la respuesta del sistema. En cuanto a la temperatura del receptor solar, se encontró que su respuesta era más suave en comparación, pero todavía tenía una respuesta rápida. Por lo tanto, se propuso una función gaussiana debido a que se ajusta más al comportamiento observado.
-				
-		
 		\subsection{Modelo y reglas del control difuso}
+				
+			En esta sección se presenta evidencia de las simulaciones realizadas, las cuales sirvieron para delimitar el universo de discurso de las variables difusas y comprender su impacto en el modelo.
+				
+			Se decidió restringir las variables difusas exclusivamente a la temperatura del agua de entrada y la del recibidor solar. Esta decisión se tomó considerando que un gran número de variables podría aumentar exponencialmente la complejidad del algoritmo y las reglas.
 			
-			Debido a que un gran número de variables pueden complicar exponencialmente la complejidad del algoritmo y las reglas, se decidió acotar las variables de este modelo exclusivamente a la temperatura del agua de entrada, del agua por evaporar y del recibidor solar.			
+			En la~\cref{fig:FuzzyUniverse} se muestra brevemente evidencia de las diferentes simulaciones hechas. En estas se estudiaron las respuestas al variar la temperatura del agua entrante, el caudal y el calor capturado por el concentrador solar.
+								
+			\begin{figure}[H]
+				\centering
+				\includegraphics[
+					width=\linewidth,
+					height = 60mm,
+					keepaspectratio
+				]{Resultados/Simulaciones/FuzzyUniverse.png}
+				\caption{Captura de pantalla de Autodesk CFD mostrando una vista general de las simulaciones realizadas}
+				\label{fig:FuzzyUniverse}
+			\end{figure}
 			
-			De estas se definieron 5 categorías y sus respectivas membresías visibles en la~\cref{fig:var-membership-functions}. Estas membresías se ajustaron de acuerdo a numerosas simulaciones realizadas que dieron una comprensión aproximada de la respuesta del sistema a una variación de la temperatura del agua de entrada y la cantidad de potencia generada por el concentrador solar. De ahí mismo, se obtuvo el conjunto de membresías que corresponden a la respuesta difusa, la cual se puede apreciar en la~\cref{fig:FlowVelocity}.
+			Durante la corrida de las simulaciones se observó que:
+			
+			\begin{enumerate}
+				\item En esta nueva geometría de la tubería de cobre, el agua de salida adquiere prácticamente la temperatura del agua solar una vez se estabiliza el intercambio de calor. Cabe resaltar que esta temperatura y la temperatura del agua a evaporar son distintas.
+				\item La variación del flujo de agua tiene el mayor impacto en el sistema; un cambio repentino en el flujo de agua tiene un impacto significativo en la temperatura del agua de salida.
+				\item La variación de la temperatura del agua entrante tiene un impacto notable en la temperatura del agua de salida, aunque es necesario un rango amplio para notar esta diferencia.
+			\end{enumerate} 
+						
+			Se propuso entonces utilizar una función de membresía triangular para el caudal, ya que representa con mayor precisión los cambios bruscos que produce en la respuesta del sistema. En cuanto a la temperatura del receptor solar, se propuso una función gaussiana debido a que se ajusta más al comportamiento observado.
+			
+			Posteriormente se definieron 5 variables lingüísticas y sus respectivas membresías, esras son visibles en las~\cref{fig:var-membership-functions,fig:FlowVelocity}.
 			
 			\begin{figure}[H]
 				\centering
@@ -397,26 +404,10 @@
 						width=\linewidth,
 						height = 60mm,
 						keepaspectratio
-					]{Resultados/Control/HeatedSeawaterTemperature.png}
-					\caption{Funciones de membresía de la temperatura del agua de mar una vez calentada}
-					\label{fig:HeatedSeawaterTemperature}
-				\end{subfigure}
-			\end{figure}
-			
-			\begin{figure}[H]\ContinuedFloat
-				\begin{subfigure}[t]{0.45\linewidth}
-					\centering
-					\includegraphics[
-						width=\linewidth,
-						height = 60mm,
-						keepaspectratio
 					]{Resultados/Control/SolarReceiverTemperature.png}
 					\caption{Funciones de membresía de la temperatura del recibidor solar}
 					\label{fig:SolarReceiverTemperature}
 				\end{subfigure}
-				\hfill
-				\caption{Funciones de membresía de las variables difusas}
-				\label{fig:var-membership-functions}
 			\end{figure}
 			
 			\begin{figure}[H]
@@ -430,22 +421,13 @@
 				\label{fig:FlowVelocity}
 			\end{figure}
 			
-			Una vez tenidas las funciones de membresía se crearon dos sets de reglas.
+			Una vez llegado a este punto se definieron las reglas que rigen el sistema difuso. Para representarlas con un mayor orden se dividieron en bloques.
 			
-			\textbf{Reglas superiores}\par
-			
-			Estas reglas se colocaron sobre las demás reglas con el fin de proteger y no superar los rangos de temperatura que soportan los componentes electrónicos utilizados. También se incluyeron aquellas que suspenden el flujo de agua en caso de considerarse necesario.
+			\textit{Si la temperatura del recibidor solar es muy baja:}\par
 			
 			\begin{itemize}
-				\item Si la temperatura del recibidor solar es muy baja, el caudal es nulo
-				\item Si la temperatura del recibidor solar es baja, y la temperatura del agua de entrada es baja o muy baja, el caudal es nulo
-				\item Si la temperatura del agua a evaporar es muy alta y la temperatura del recibidor solar es media, alta o muy alta, el caudal es muy alto
-				\item Si la temperatura del agua a evaporar es muy alta y la temperatura del recibidor solar es baja o muy baja, el caudal es alto
+				\item El caudal es nulo en todos los casos.
 			\end{itemize}
-			
-			\textbf{Reglas generales}\par
-			
-			Estas reglas se ejecutan después de que las reglas superiores son evaluadas y se dividen de acuerdo a la temperatura del recibidor solar
 			
 			\textit{Si la temperatura del recibidor solar es baja:}\par
 			\begin{itemize}
@@ -491,7 +473,7 @@
 					width=\linewidth,
 					height=65mm,
 					keepaspectratio
-				]{Resultados/Construcción/Intercambiador-de-calor.jpeg}
+				]{Resultados/Construcción/Intercambiador-de-calor.jpg}
 				\caption{Intercambiador de calor con aletas verticales}
 				\label{fig:Intercambiador-de-calor.jpeg}
 			\end{figure}
