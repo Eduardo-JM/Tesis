@@ -18,11 +18,11 @@
 			\gls{pvapor} = \gls{humedad-relativa} P_{\text{sat a T}}
 		\end{equation}
 		
-	\section{Ebullición del agua}
+	\subsection{Ebullición del agua}
 
 		La ebullición del agua es un proceso complejo de analizar pues comprende varias etapas, tanto si es ebullición en estanque como en flujo. La creación aparentemente aleatoria de burbujas y de películas de vapor hacen que no se pueda obtener de manera precisa un modelo matemático que describa el comportamiento de este fenómeno.
 
-		\subsection{Ebullición en estanque}
+		\subsubsection{Ebullición en estanque}
 
 			La ebullición en estanque presenta 4 regímenes de ebullición: ebullición en convección natural, ebullición nucleada, ebullición de transición y ebullición en película
 
@@ -36,7 +36,7 @@
 
 			En la curva mostrada en la~\cref{fig:indice-estres-evaporativo} se puede apreciar no sigue un comportamiento lineal y el que la superficie tenga más temperatura no significa que aumentará la transferencia de calor, pues la formación de burbujas al cambiar de fase el agua disminuye esta razón y entre mayor sea esta capa de vapor, menor transferencia tendremos dada la menor conductividad térmica del vapor. En general, los procesos de ebullición no seguirán más allá de nuestro punto C, pues para lograr obtener otra vez la misma transferencia de calor se tendría que alcanzar el punto E, el cual alcanza temperaturas mayores al punto de fusión de varios de los materiales que usualmente son empleados durante estos procesos. Cabe mencionar que una vez alcanzado el punto de Leidenfrost, se observa que la transferencia de calor por radiación empieza a apreciarse y cuando la temperatura en exceso es demasiado alta, este mecanismo de transferencia se vuelve predominante.
 
-		\subsection{Ebullición en flujo interno}
+		\subsubsection{Ebullición en flujo interno}
 
 			La ebullición en flujo fuerza a un fluido a moverse por medio de una fuerza externa, este se considera en flujo interno si la superficie por la que fluye evita que el vapor escape, es decir un flujo dentro de un tubo. Este método de transferencia al ser bifásico es más complejo de analizar y se pueden distinguir 7 etapas visibles en la~\cref{fig:Regimenes-ebullicion-en-flujo-interno}. Es a su vez importante recordar que durante este fenómeno se presenta la condición de no deslizamiento.
 
@@ -126,66 +126,66 @@
 					f = \dfrac{8\tau_{w}}{\rho V_{promedio}^{2}}
 				\end{equation}
 
-			\subsection{Intensificación de la transferencia de calor}
+		\subsection{Intensificación de la transferencia de calor}
 
-				Cengel \cite{cengel_transferencia_2010} nos indica que una manera de mejorar la transferencia de calor hacer intencionalmente que la superficie tenga asperezas o porosidades para favorecer la nucleación, por lo que a menudo las superficies de los tubos son ásperas, corrugadas o con aletas, teniendo importantes incrementos en la transferencia de calor con hasta un \qty{400}{\percent} de mejora, aunque este aumento viene acompañado de un incremento en el factor de fricción y caída de presión, otras maneras de mejorar esta transferencia son generadores de pulsos, al inducir remolinos.
+			Cengel \cite{cengel_transferencia_2010} nos indica que una manera de mejorar la transferencia de calor hacer intencionalmente que la superficie tenga asperezas o porosidades para favorecer la nucleación, por lo que a menudo las superficies de los tubos son ásperas, corrugadas o con aletas, teniendo importantes incrementos en la transferencia de calor con hasta un \qty{400}{\percent} de mejora, aunque este aumento viene acompañado de un incremento en el factor de fricción y caída de presión, otras maneras de mejorar esta transferencia son generadores de pulsos, al inducir remolinos.
 
-				Ramírez \cite{ramirez_intensificacion_2018} realizó un trabajo donde aglomera distintos métodos para mejorar la razón de transferencia de calor en ebullición convectiva durante el flujo interno de un fluido revisando numerosos mecanismos entre los que se encuentran:
+			Ramírez \cite{ramirez_intensificacion_2018} realizó un trabajo donde aglomera distintos métodos para mejorar la razón de transferencia de calor en ebullición convectiva durante el flujo interno de un fluido revisando numerosos mecanismos entre los que se encuentran:
 
-				\textit{Tubos con aletas internas}
+			\textit{Tubos con aletas internas}
 
 				Las aletas internas son utilizadas para mejorar la transferencia de calor en flujos multifásicos y monofásicos; disminuyen el diámetro hidráulico a la vez que aumentan la superficie de contacto y aunque no presenta ínfimas ventajas para la nucleación tiene un considerable aumento en la convección de fluidos multifásicos.
 
 				\begin{figure}[ht]
-					\centering
-					\includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/tubos-aletados.png}
-					\caption{Tubo con aletas internas}
-					\floatfoot{Imagen obtenida de \cite{direct_industry_tubos_nodate}}
-					\label{fig:tubos-aletados}
-				\end{figure}
+	\centering
+	\includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/tubos-aletados.png}
+	\caption{Tubo con aletas internas}
+	\floatfoot{Imagen obtenida de \cite{direct_industry_tubos_nodate}}
+	\label{fig:tubos-aletados}
+\end{figure}
 
 				\textit{Tubos microaletados}
 
 				Aunque son tubos usualmente utilizados para la refrigeración y aire acondicionado \cites{wang_single-phase_1996}{greco_convective_2008} citados por \cite{ramirez_intensificacion_2018} pudieron mostrar que los incrementos en tubos con microaletas tienen incrementos en el intercambio de calor de $1.6$ a $3.2$ veces, siendo las causas principales:
 
 				\begin{itemize}[columns = 2]
-					\item Aumento del área de contacto
-					\item El área de levantamiento en la dirección de la circunferencia es grande
-					\item Aumento de cavidades para la nucleación
-					\item Las aletas tienen un efecto sobre la tubulencia y el flujo secundario
-				\end{itemize}
+	\item Aumento del área de contacto
+	\item El área de levantamiento en la dirección de la circunferencia es grande
+	\item Aumento de cavidades para la nucleación
+	\item Las aletas tienen un efecto sobre la tubulencia y el flujo secundario
+\end{itemize}
 
 				\begin{figure}[htb]
-					\centering
-					 \begin{subfigure}[H]{0.6\textwidth}
-				         \centering
-				         \includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/tubo-microaletado.png}
-				         \caption{Geometría del tubo}
-				         \label{fig:tubo-microaletado}
-				     \end{subfigure}
-				     \hfill
-				     \begin{subfigure}[H]{0.3\textwidth}
-				         \centering
-				         \includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/tubo-microaletado-cerca.png}
-				         \caption{Perfil de la aleta }
-				         \label{fig:tubo-microaletado-cerca}
-				     \end{subfigure}
-					\caption{Tubos con microaletas}
-					\floatfoot{Imagen obtenida de \cite{ramirez_intensificacion_2018}}
-					\label{fig:tubos-microaletados}
-				\end{figure}
+	\centering
+	 \begin{subfigure}[H]{0.6\textwidth}
+         \centering
+         \includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/tubo-microaletado.png}
+         \caption{Geometría del tubo}
+         \label{fig:tubo-microaletado}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[H]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/tubo-microaletado-cerca.png}
+         \caption{Perfil de la aleta }
+         \label{fig:tubo-microaletado-cerca}
+     \end{subfigure}
+	\caption{Tubos con microaletas}
+	\floatfoot{Imagen obtenida de \cite{ramirez_intensificacion_2018}}
+	\label{fig:tubos-microaletados}
+\end{figure}
 
 				\textit{Arreglo de tubos de cintas torcidas}
 
 				Este arreglo es ampliamente usado para flujos monofásicos, sin embargo, también son dispositivos muy eficaces en el aumento de la razón de transferencia de calor, dado a que estos arreglos centrifugan el líquido contra la pared desplazando el vapor y reduciendo el diámetro hidráulico, también propician remolinos que incrementan la interacción de la materia y energía aunque también \textbf{existe una caída de presión importante}.
 
 				\begin{figure}[ht]
-					\centering
-					\includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/arreglo-cintas-torcidas.png}
-					\caption{Arreglo de cintas torcidas}
-					\floatfoot{Imagen obtenida de \cite{ramirez_intensificacion_2018}}
-					\label{fig:cintas-torcidas}
-				\end{figure}
+	\centering
+	\includegraphics[width=\linewidth,height=50mm, keepaspectratio]{Marco-teórico/arreglo-cintas-torcidas.png}
+	\caption{Arreglo de cintas torcidas}
+	\floatfoot{Imagen obtenida de \cite{ramirez_intensificacion_2018}}
+	\label{fig:cintas-torcidas}
+\end{figure}
 
 				\textit{Campos acústicos}
 
