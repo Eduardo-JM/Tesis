@@ -136,9 +136,24 @@
 					En este módulo se monitorea la temperatura del agua.
 				\end{center}
 			
+			\subsubsection{Intercambiador de calor}
+			
+				Este módulo tiene la función de enfriar el vapor caliente para condensar el agua destilada y a su vez inyectar ese calor al agua de mar entrante.
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[
+						width=\linewidth,
+						height=70mm,
+						keepaspectratio
+					]{Resultados/Sistema/HeatExchanger.png}
+					\caption{Diseño sugerido para el intercambiador de calor}
+					\label{fig:HeatExchanger}
+				\end{figure}
+			
 			\subsubsection{Módulo de concentración solar}
 				
-				Este módulo se divide en dos partes por cuestiones de ensamble y manufactura. La parte superior se encarga de soportar un cristal de borosilicato por el cual atraviesan los rayos solares. Este cristal nos permite mantener un mejor aislamiento térmico del recibidor solar así como evitar la exposición directa al ambiente.
+				Este módulo se divide en dos partes por cuestiones de ensamble y manufactura. La parte superior se encarga de soportar un cristal de borosilicato por el cual atraviesan los rayos solares. Este cristal permite mantener un mejor aislamiento térmico del recibidor solar así como evitar la exposición directa al ambiente.
 				
 				Por otra parte, en el submódulo inferior ocurre el intercambio de calor entre el recibidor solar y el agua. Esto se logra por medio de la conducción de calor entre el recibidor y una tubería de cobre. La elección de la tubería de cobre se dio debido a su alta conductividad térmica, flexibilidad, disponibilidad y costos, ya que en un inicio se planteó el uso de acero galvanizado y de acero inoxidable 316, sin embargo, como se mostrará en las simulaciones siguientes no resultaba buen conductor térmico además de ser difícilmente manufacturable; también se descartó el uso de tuberías de aluminio 5052 debido a su escaza disponibilidad.
 				
@@ -314,7 +329,7 @@
 			
 			\textbf{Termistores}\par
 			
-			Para caracterizar los termistores se refirió a un set de datos que reflejan la respuesta óhmica al aplicarse cierta temperatura; el código visto en~\cref{ch:steinhart-code} nos permite hallar los coeficientes de Steinhart-Hart para este modelo.
+			Para caracterizar los termistores se refirió a un set de datos que reflejan la respuesta óhmica al aplicarse cierta temperatura; el código visto en~\cref{ch:steinhart-code} permite hallar los coeficientes de Steinhart-Hart para este modelo.
 			
 			Se halló que:
 			
@@ -465,34 +480,18 @@
 			
 			Este conjunto de reglas tienen como objetivo tratar de mantener la temperatura del agua entre \qtyrange{62.5}{67.5}{\degreeCelsius} con el fin de evitar daños en los componentes eléctricos. Aunque se observó que sería un caso improbable, se decidió agregar una función protectora que aumenta el caudal al máximo si la temperatura del agua a evaporar se acerca peligrosamente a los \qty{70}{\degreeCelsius} (límite de operación de los componentes eléctricos seleccionados).
 		
-		\subsection{Automatización del vaciado y llenado de nuestros módulos}
+		\subsection{Automatización del vaciado y llenado de los módulos}
 			
 			Como se explicó anteriormente, esta segunda parte del control se encarga de administrar los volúmenes de agua dentro del ``Módulo de reaprovechamiento térmico y bombeo''.
 			
 			Para el contenedor de agua de mar, se usa un sensor de nivel para saber cuándo es necesario suministrar más agua al contenedor. Caso contrario, en el contenedor de agua destilada, se usa para saber cuándo es necesario vaciarlo. En el caso de la cámara de evaporación, se usa el sensor de temperatura y el estado del sistema de control difuso para saber si hay salmuera en la cámara. Si la temperatura de la salmuera baja de los \qty{40}{\degreeCelsius} o han transcurrido 2 horas de operación, se vacía la salmuera.
-			
-	
-	\section{Construcción e integración del sistema}
-		
-		\section{Módulo de reaprovechamiento térmico y bombeo}
-		
-			El intercambiador de calor 
-			
-			\begin{figure}[H]
-				\centering
-				\includegraphics[
-					width=\linewidth,
-					height=65mm,
-					keepaspectratio
-				]{Resultados/Construcción/Intercambiador-de-calor.jpg}
-				\caption{Intercambiador de calor con aletas verticales}
-				\label{fig:Intercambiador-de-calor.jpeg}
-			\end{figure}
-		
+
 	
 	\section{Integración al seguidor solar}
-	
-		Para integrar el desalinizador al seguidor solar, se construyó un marco que soportara la lente, la altura de colocación de la lente se calculó mediante la ley de Snell y trigonometría siguiendo el arreglo mostrado en la~\cref{fig:DiagramaRayos}.
+		
+		Para integrar el desalinizador al seguidor solar, se construyeron dos estructuras, la primera es marco que soporta la lente, la altura de colocación de la lente se calculó mediante la ley de Snell y trigonometría siguiendo el arreglo mostrado en la~\cref{fig:DiagramaRayos}.
+		
+		De los cálculos hechos, se obtuvo una altura al punto focal de \qty{362.45}{\mm}. A eso se le sumó la altura del recibidor solar con respecto al módulo de concentración solar dando que la altura mínima del marco es de \qty{442.50}{\mm}.
 		
 		\begin{figure}[H]
 			\centering
@@ -505,14 +504,42 @@
 			\label{fig:DiagramaRayos}
 		\end{figure}
 		
+		La segunda estructura (\cref{fig:DiagramaRayos}) es una base sobre la que reposa la base de agua.
 		
-		De los cálculos hechos, se obtuvo una altura al punto focal de \qty{362.45}{\mm}. A eso se le sumó la altura del recibidor solar con respecto al módulo de concentración solar dando que la altura mínima del marco es de \qty{442.50}{\mm}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[
+				width=\linewidth,
+				height=65mm,
+				keepaspectratio
+			]{Resultados/Integración/BaseBaja.png}
+			\caption{Base para el Módulo inferior}
+			\label{fig:DiagramaRayos}
+		\end{figure}
 		
-			
-			
+		Finalmente en la~\cref{fig:VistaCompleta} se observa la integración completa al seguidor solar.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[
+				width=\linewidth,
+				height=65mm,
+				keepaspectratio
+			]{Resultados/Integración/VistaCompleta.jpg}
+			\caption{Vista lateral del ensamble completo}
+			\label{fig:VistaCompleta}
+		\end{figure}
 
-
 			
-			
+%			\begin{figure}[H]
+%				\centering
+%				\includegraphics[
+%					width=\linewidth,
+%					height=65mm,
+%					keepaspectratio
+%				]{Resultados/Construcción/Intercambiador-de-calor.jpg}
+%				\caption{Intercambiador de calor con aletas verticales}
+%				\label{fig:Intercambiador-de-calor.jpeg}
+%			\end{figure}
 			
 			
